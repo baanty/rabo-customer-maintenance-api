@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.rabo.api.dao.CustomerDao;
+import com.rabo.api.service.entity.AddressEntity;
 import com.rabo.api.service.entity.CustomerEntity;
+import com.rabo.api.vo.AddressVo;
 import com.rabo.api.vo.CustomerVo;
 
 @Service
@@ -24,12 +26,17 @@ public class CustomerService {
 		if ( customers != null ) {
 			List<CustomerVo> vos = StreamSupport
 											.stream(customers.spliterator(), false)
-											.map(entity -> CustomerVo.builder()
-												.firstName(entity.getFirstName())
-												.lastName(entity.getLastName())
-												.age(entity.getAge())
-												.address(entity.getAddress())
-												.build())
+											.filter(entity -> entity != null)
+					.map(entity -> {
+
+						AddressEntity address = entity.getAddress() != null ? entity.getAddress()
+								: new AddressEntity(0, null, null, entity);
+						AddressVo addressVo = AddressVo.builder().city(address.getCity())
+								.streetName(address.getStreetName()).build();
+						CustomerVo vo = CustomerVo.builder().firstName(entity.getFirstName())
+								.lastName(entity.getLastName()).age(entity.getAge()).address(addressVo).build();
+						return vo;
+					})
 											.collect(Collectors.toList());
 			
 			return vos;
@@ -39,11 +46,18 @@ public class CustomerService {
 	
 	
 	CustomerVo addNewCustomer(CustomerVo vo) {
+		AddressEntity addressEntity = 
+				( vo != null && vo.getAddress() != null ) ?
+				AddressEntity.builder()
+							.city(vo.getAddress().getCity())
+							.streetName(vo.getAddress().getStreetName())
+							.build() 
+				: new AddressEntity(0, null, null, null);
 		CustomerEntity entity = CustomerEntity.builder()
 												.firstName(vo.getFirstName())
 												.lastName(vo.getLastName())
 												.age(vo.getAge())
-												.address(vo.getAddress()).build();
+												.address(addressEntity).build();
 		dao.save(entity);
 		return vo;
 	}
@@ -53,12 +67,19 @@ public class CustomerService {
 		Optional<CustomerEntity> optionalEntity = dao.findById(id);
 		
 		if ( optionalEntity.isPresent() ) {
+			
+			
 			CustomerEntity entity = optionalEntity.get();
+			
+			AddressEntity address = entity.getAddress() != null ? entity.getAddress()
+					: new AddressEntity(0, null, null, entity);
+			AddressVo addressVo = AddressVo.builder().city(address.getCity())
+					.streetName(address.getStreetName()).build();
 			return CustomerVo.builder()
 					.firstName(entity.getFirstName())
 					.lastName(entity.getLastName())
 					.age(entity.getAge())
-					.address(entity.getAddress())
+					.address(addressVo)
 					.build();
 		}
 		return null;

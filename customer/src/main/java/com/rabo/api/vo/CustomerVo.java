@@ -16,6 +16,6 @@ public class CustomerVo
 	
 	private int age;
 	
-	private String address;
+	private AddressVo address;
 
 }
