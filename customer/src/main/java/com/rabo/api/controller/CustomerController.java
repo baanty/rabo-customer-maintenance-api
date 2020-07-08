@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -58,8 +59,8 @@ public class CustomerController {
 	 * @param id : The ID of the customer
 	 * @return : The found customer. If not found, gives a null return.
 	 */
-	@PostMapping("/findCustomerById/{id}")
-	CustomerVo findCustomerById(final int id) {
+	@GetMapping("/findCustomerById/{id}")
+	CustomerVo findCustomerById(final @PathVariable Integer id) {
 		try {
 			return service.findCustomerById(id);
 		} catch (Exception exception) {

@@ -1,0 +1,11 @@
+{
+   "id":4,
+   "firstName":"Daniel",
+   "lastName":"Cobain",
+   "age":27,
+   "address":{
+      "id":4,
+      "streetName":"171 Lake Washington Boulevard East",
+      "city":"Seattle"
+   }
+}

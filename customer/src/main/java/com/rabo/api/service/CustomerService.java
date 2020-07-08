@@ -78,9 +78,9 @@ public class CustomerService {
 
 				AddressEntity address = entity.getAddress() != null ? entity.getAddress()
 						: new AddressEntity(0, null, null, entity);
-				AddressVo addressVo = AddressVo.builder().city(address.getCity()).streetName(address.getStreetName())
+				AddressVo addressVo = AddressVo.builder().id(address.getId()).city(address.getCity()).streetName(address.getStreetName())
 						.build();
-				return CustomerVo.builder().firstName(entity.getFirstName()).lastName(entity.getLastName())
+				return CustomerVo.builder().id(entity.getId()).firstName(entity.getFirstName()).lastName(entity.getLastName())
 						.age(entity.getAge()).address(addressVo).build();
 			}
 		} catch (Exception exception) {
