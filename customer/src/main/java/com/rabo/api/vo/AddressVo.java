@@ -1,10 +1,14 @@
 package com.rabo.api.vo;
 
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
-@Builder
+
 @Data
+@Builder
+@AllArgsConstructor(access = AccessLevel.PUBLIC)
 public class AddressVo 
 {
 

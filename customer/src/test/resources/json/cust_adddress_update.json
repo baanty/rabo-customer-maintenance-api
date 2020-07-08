@@ -1,0 +1,11 @@
+{
+   "id":0,
+   "firstName":"Pijush K",
+   "lastName":"Das",
+   "age":99,
+   "address":{
+      "id":0,
+      "streetName":"Eemnesserweg",
+      "city":"Hilversum"
+   }
+}

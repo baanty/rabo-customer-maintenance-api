@@ -10,30 +10,35 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Builder
 @Data
 @Entity
-@Table(name = "CUSTOMER" )
-public class CustomerEntity 
-{
+@Table(name = "CUSTOMER")
+@NoArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PUBLIC)
+public class CustomerEntity {
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	
+
 	@Column(name = "FIRST_NAME")
 	private String firstName;
-	
+
 	@Column(name = "LAST_NAME")
 	private String lastName;
-	
+
 	@Column(name = "AGE")
 	private int age;
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "ADDRESS_ID", referencedColumnName = "id")
+	@JoinColumn(name = "ADDRESS_ID", referencedColumnName = "id")
 	private AddressEntity address;
 
 }

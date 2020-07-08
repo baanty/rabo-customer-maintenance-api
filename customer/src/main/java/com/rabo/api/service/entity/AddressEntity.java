@@ -12,25 +12,27 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Builder
 @Data
 @Entity
-@Table(name = "ADDRESS" )
+@Table(name = "ADDRESS")
+@NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
-public class AddressEntity 
-{
+public class AddressEntity {
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	
+
 	@Column(name = "STREET_NAME")
 	private String streetName;
-	
+
 	@Column(name = "CITY")
 	private String city;
-	
-    @OneToOne(mappedBy = "address")
-    private CustomerEntity customerEntity;
+
+	@OneToOne(mappedBy = "address")
+	private CustomerEntity customerEntity;
 
 }
