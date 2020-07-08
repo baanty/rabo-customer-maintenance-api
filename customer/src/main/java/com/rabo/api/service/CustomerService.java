@@ -7,6 +7,7 @@ import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import com.rabo.api.dao.CustomerDao;
 import com.rabo.api.service.entity.AddressEntity;
@@ -82,6 +83,40 @@ public class CustomerService {
 					.address(addressVo)
 					.build();
 		}
+		return null;
+	}
+	
+	CustomerVo findCustomerByFirstNameOrLastName(CustomerVo vo) {
+		
+		if (vo != null && ( StringUtils.hasText(vo.getFirstName()) || StringUtils.hasText(vo.getLastName()) )) {
+			
+			CustomerEntity entity = dao.findByFirstName(vo.getFirstName()).isEmpty() ? 
+			
+			if ( StringUtils.hasText(vo.getFirstName()) ) {
+				
+			}
+
+			Optional<CustomerEntity> optionalEntity = dao.findById(id);
+			
+			if ( optionalEntity.isPresent() ) {
+				
+				
+				CustomerEntity entity = optionalEntity.get();
+				
+				AddressEntity address = entity.getAddress() != null ? entity.getAddress()
+						: new AddressEntity(0, null, null, entity);
+				AddressVo addressVo = AddressVo.builder().city(address.getCity())
+						.streetName(address.getStreetName()).build();
+				return CustomerVo.builder()
+						.firstName(entity.getFirstName())
+						.lastName(entity.getLastName())
+						.age(entity.getAge())
+						.address(addressVo)
+						.build();
+			}
+			
+		}
+
 		return null;
 	}
 	
