@@ -58,7 +58,7 @@ public class CustomerService {
 	 * @return : The created customer.
 	 */
 	public CustomerVo addNewCustomer(CustomerVo vo) {
-		saveCustomer(vo);
+		saveCustomer(vo, false);
 		return vo;
 	}
 
@@ -137,13 +137,13 @@ public class CustomerService {
 	 */
 	public CustomerVo updateAddress(CustomerVo vo) {
 
-		if (vo != null && vo.getAddress() != null && findCustomerById(vo.getId()) != null  ) {
-			saveCustomer(vo);
+		if (vo != null && vo.getAddress() != null  ) {
+			saveCustomer(vo, true);
 		}
 		return vo;
 	}
 
-	private void saveCustomer(CustomerVo vo) {
+	private void saveCustomer(CustomerVo vo, boolean isUpdate) {
 		try {
 			AddressEntity addressEntity = (vo != null && vo.getAddress() != null)
 					? AddressEntity.builder().city(vo.getAddress().getCity())
@@ -151,6 +151,16 @@ public class CustomerService {
 					: new AddressEntity(0, null, null, null);
 			CustomerEntity entity = CustomerEntity.builder().firstName(vo.getFirstName()).lastName(vo.getLastName())
 					.age(vo.getAge()).address(addressEntity).build();
+			
+			if ( isUpdate ) {
+				Optional<CustomerEntity> optionalEntity = dao.findById(vo.getId());
+
+				if ( optionalEntity.isPresent() ) {
+					entity = optionalEntity.get();
+					entity.setAddress(addressEntity);
+				}
+				
+			}
 			dao.save(entity);
 		} catch (Exception exception) {
 			log.error("And error occured while saving the customer.", exception);
