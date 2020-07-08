@@ -36,7 +36,7 @@ public class CustomerService {
 	 * Use this method to find all the customers from teh database.
 	 * @return
 	 */
-	List<CustomerVo> findAllCustomers() {
+	public List<CustomerVo> findAllCustomers() {
 
 		try {
 			Iterable<CustomerEntity> customers = dao.findAll();
@@ -57,7 +57,7 @@ public class CustomerService {
 	 * @param vo : The API input value object.
 	 * @return : The created customer.
 	 */
-	CustomerVo addNewCustomer(CustomerVo vo) {
+	public CustomerVo addNewCustomer(CustomerVo vo) {
 		saveCustomer(vo);
 		return vo;
 	}
@@ -68,7 +68,7 @@ public class CustomerService {
 	 * @param id : The ID of the customer
 	 * @return : The found customer. If not found, gives a null return.
 	 */
-	CustomerVo findCustomerById(int id) {
+	public CustomerVo findCustomerById(int id) {
 		try {
 			Optional<CustomerEntity> optionalEntity = dao.findById(id);
 
@@ -99,7 +99,7 @@ public class CustomerService {
 	 * @param vo : The input Value object.
 	 * @return : The found customers. If not found, then null.
 	 */
-	List<CustomerVo> findCustomerByFirstNameOrLastName(CustomerVo vo) {
+	public List<CustomerVo> findCustomerByFirstNameOrLastName(CustomerVo vo) {
 
 		try {
 			if (vo != null && (StringUtils.hasText(vo.getFirstName()) || StringUtils.hasText(vo.getLastName()))) {
@@ -135,7 +135,7 @@ public class CustomerService {
 	 * @param vo : The customer, whose address has to be saved.
 	 * @return : The updated customer.
 	 */
-	CustomerVo updateAddress(CustomerVo vo) {
+	public CustomerVo updateAddress(CustomerVo vo) {
 
 		if (vo != null && vo.getAddress() != null && findCustomerById(vo.getId()) != null  ) {
 			saveCustomer(vo);

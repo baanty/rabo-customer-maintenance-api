@@ -13,7 +13,5 @@ public interface CustomerDao extends CrudRepository<CustomerEntity, Integer> {
 	List<CustomerEntity> findByFirstName(String firstName);
 	
 	List<CustomerEntity> findByLastName(String lastName);
-	
-	List<CustomerEntity> findByFirstNameAndLastName(String firstName, String lastName);
 
 }
