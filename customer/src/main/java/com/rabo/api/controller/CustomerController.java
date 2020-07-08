@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.rabo.api.exception.GenericCustomerApplicationRuntimeException;
 import com.rabo.api.service.CustomerService;
 import com.rabo.api.vo.CustomerVo;
 
@@ -33,23 +34,23 @@ public class CustomerController {
 			return service.findAllCustomers();
 		} catch (Exception exception) {
 			log.error("And error occured while finding all the customers.", exception);
-			throw new RuntimeException(exception);
+			throw new GenericCustomerApplicationRuntimeException(exception);
 		}
 	}
 
 	/**
 	 * Use this method to save a new customer. However, if a new customer is already existing,
 	 * it will update the old customer.
-	 * @param vo : The API input value object.
+	 * @param customerVo : The API input value object.
 	 * @return : The created customer.
 	 */
 	@PostMapping("/addNewCustomer")
-	CustomerVo addNewCustomer(final @RequestBody CustomerVo vo) {
+	CustomerVo addNewCustomer(final @RequestBody CustomerVo customerVo) {
 		try {
-			return service.addNewCustomer(vo);
+			return service.addNewCustomer(customerVo);
 		} catch (Exception exception) {
 			log.error("And error occured while adding the customer.", exception);
-			throw new RuntimeException(exception);
+			throw new GenericCustomerApplicationRuntimeException(customerVo.getId(), exception);
 		}
 	}
 
@@ -65,7 +66,7 @@ public class CustomerController {
 			return service.findCustomerById(id);
 		} catch (Exception exception) {
 			log.error("And error occured while finding customers by id.", exception);
-			throw new RuntimeException(exception);
+			throw new GenericCustomerApplicationRuntimeException(id, exception);
 		}
 	}
 
@@ -88,7 +89,7 @@ public class CustomerController {
 			return service.findCustomerByFirstNameOrLastName(customerVo);
 		} catch (Exception exception) {
 			log.error("And error occured while finding by first name or last name.", exception);
-			throw new RuntimeException(exception);
+			throw new GenericCustomerApplicationRuntimeException(customerVo.getId(), exception);
 		}
 	}		
 		
@@ -113,7 +114,7 @@ public class CustomerController {
 			return service.findCustomerByFirstNameOrLastName(firstName, lastName);
 		} catch (Exception exception) {
 			log.error("And error occured while finding by first name or last name.", exception);
-			throw new RuntimeException(exception);
+			throw new GenericCustomerApplicationRuntimeException(exception);
 		}
 	}
 
@@ -122,17 +123,17 @@ public class CustomerController {
 	 * Use this method to update the address of the customer. But if the customer does not already exist,
 	 * you will get a null return.
 	 * 
-	 * @param vo : The customer, whose address has to be saved.
+	 * @param customerVo : The customer, whose address has to be saved.
 	 * @return : The updated customer.
 	 */
 	@PutMapping("/updateAddress")
-	CustomerVo updateAddress(final @RequestBody CustomerVo vo) {
+	CustomerVo updateAddress(final @RequestBody CustomerVo customerVo) {
 
 		try {
-			return service.updateAddress(vo);
+			return service.updateAddress(customerVo);
 		} catch (Exception exception) {
 			log.error("And error occured while updating customer address", exception);
-			throw new RuntimeException(exception);
+			throw new GenericCustomerApplicationRuntimeException(customerVo.getId(), exception);
 		}
 	}
 
