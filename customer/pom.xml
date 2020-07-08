@@ -23,8 +23,7 @@
 		<java.release>8</java.release>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<start-class>com.ing.fraud.authentication.CustomerAuthenticationApi
-		</start-class>
+		<start-class>com.rabo.api.RaboCustomerMaintenance</start-class>
 	</properties>
 
 	<dependencies>

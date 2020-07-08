@@ -33,7 +33,7 @@ public class CustomerEntity
 	private int age;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    @JoinColumn(name = "ADDRESS_ID", referencedColumnName = "id")
 	private AddressEntity address;
 
 }
