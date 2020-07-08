@@ -176,9 +176,9 @@ public class CustomerService {
 
 						AddressEntity address = entity.getAddress() != null ? entity.getAddress()
 								: new AddressEntity(0, null, null, entity);
-						AddressVo addressVo = AddressVo.builder().city(address.getCity())
+						AddressVo addressVo = AddressVo.builder().id(address.getId()).city(address.getCity())
 								.streetName(address.getStreetName()).build();
-						CustomerVo vo = CustomerVo.builder().firstName(entity.getFirstName())
+						CustomerVo vo = CustomerVo.builder().id(entity.getId()).firstName(entity.getFirstName())
 								.lastName(entity.getLastName()).age(entity.getAge()).address(addressVo).build();
 						return vo;
 					}).collect(Collectors.toList());
