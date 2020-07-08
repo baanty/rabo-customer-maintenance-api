@@ -1,11 +1,23 @@
  
-INSERT INTO AIRPORTS (
-	AIRPORT_CODE, 
-	AIRPORT_DESCRIPTION, 
-	AIRPORT_X_CORDINATE,
-	AIRPORT_Y_CORDINATE) VALUES
-  ('LND', 'London Airport', 51, 27),
-  ('KOL', 'Kolkata Airport', 22, 88),
-  ('AMS', 'Amsterdam Airport', 51, 4);
+INSERT INTO ADDRESS (
+	ID, 
+	STREET_NAME, 
+	CITY) VALUES
+  (1, 'Eemnesserweg', 'Hilversum'),
+  (2, 'Seinstraat', 'Hilversum'),
+  (3, 'Rasselstraat', 'Bussum');
+
+  
+INSERT INTO CUSTOMER (
+	ID, 
+	FIRST_NAME, 
+	LAST_NAME,
+	AGE,
+	ADDRESS_ID) VALUES
+  (1, 'Pijush K', 'Das', 99, 1),
+  (2, 'Mijndert', 'Rebel', 45, 2),
+  (3, 'Paul', 'Stevens', 49, 3);
+  
+  
   
 COMMIT;
