@@ -75,20 +75,47 @@ public class CustomerController {
 	 * If there is no customer with the given first name, then only the last name will
 	 * be consulted.
 	 * 
-	 * @param vo : The input Value object.
+	 * If the User does not like to give the first name and last name
+	 * in the body of the json, he can use the over loaded <code>CustomerController.findCustomerByFirstNameOrLastName</code> method. 
+	 * 
+	 * @param customerVo : The input Value object.
 	 * @return : The found customers. If not found, then null.
 	 */
 	@GetMapping("/findCustomerByFirstNameOrLastName")
-	List<CustomerVo> findCustomerByFirstNameOrLastName(final @RequestBody CustomerVo vo) {
+	List<CustomerVo> findCustomerByFirstNameOrLastName(final @RequestBody CustomerVo customerVo) {
 
 		try {
-			return service.findCustomerByFirstNameOrLastName(vo);
+			return service.findCustomerByFirstNameOrLastName(customerVo);
 		} catch (Exception exception) {
 			log.error("And error occured while finding by first name or last name.", exception);
 			throw new RuntimeException(exception);
 		}
 	}		
 		
+	
+	/**
+	 * USe this method to get all the customers with matching first or last name.
+	 * Please note , if the first name matches, then the last name will not be used.
+	 * If there is no customer with the given first name, then only the last name will
+	 * be consulted.
+	 * 
+	 * @param vo : The input Value object.
+	 * @param firstName : First Name of the customer. Remember, that it is an exact Search. It is not a 'Like Search'. So, you have
+	 * to give the exact search String.
+	 * @param lastName : Last Name of the customer. Remember, that it is an exact Search. It is not a 'Like Search'. So, you have
+	 * to give the exact search String.
+	 * @return : The found customers. If not found, then null.
+	 */
+	@GetMapping("/findCustomerByFirstNameOrLastName/{firstName}/{lastName}")
+	List<CustomerVo> findCustomerByFirstNameOrLastName(final @PathVariable String firstName, final @PathVariable String lastName) {
+
+		try {
+			return service.findCustomerByFirstNameOrLastName(firstName, lastName);
+		} catch (Exception exception) {
+			log.error("And error occured while finding by first name or last name.", exception);
+			throw new RuntimeException(exception);
+		}
+	}
 
 
 	/**

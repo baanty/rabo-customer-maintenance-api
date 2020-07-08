@@ -1,0 +1,16 @@
+curl -u admin:password -H "Content-Type: application/json" --data @cust_new_add.json http://localhost:8081/rabo-customer-maintenance-api/addNewCustomer
+
+curl http://localhost:8081/rabo-customer-maintenance-api/findCustomerById/3 -u admin:password 
+
+curl -u admin:password http://localhost:8081/rabo-customer-maintenance-api/findCustomerById/3
+
+
+curl -u admin:password http://localhost:8081/rabo-customer-maintenance-api/findCustomerById/3
+
+
+
+curl -X GET -u admin:password -H "Content-Type: application/json" --data @find_by_first_name.json http://localhost:8081/rabo-customer-maintenance-api/findCustomerByFirstNameOrLastName
+
+curl -X GET -u admin:password -H "Content-Type: application/json" --data @find_by_last_name.json http://localhost:8081/rabo-customer-maintenance-api/findCustomerByFirstNameOrLastName
+
+curl -X PUT -u admin:password -H "Content-Type: application/json" --data @cust_adddress_update.json http://localhost:8081/rabo-customer-maintenance-api/updateAddress

@@ -7,6 +7,9 @@ import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
@@ -27,6 +30,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @Service
+@Transactional(isolation = Isolation.SERIALIZABLE, propagation = Propagation.REQUIRES_NEW)
 public class CustomerService {
 
 	@Autowired
@@ -96,25 +100,52 @@ public class CustomerService {
 	 * If there is no customer with the given first name, then only the last name will
 	 * be consulted.
 	 * 
-	 * @param vo : The input Value object.
+	 * @param customerVo : The input Value object.
 	 * @return : The found customers. If not found, then null.
 	 */
-	public List<CustomerVo> findCustomerByFirstNameOrLastName(CustomerVo vo) {
+	public List<CustomerVo> findCustomerByFirstNameOrLastName(CustomerVo customerVo) {
 
 		try {
-			if (vo != null && (StringUtils.hasText(vo.getFirstName()) || StringUtils.hasText(vo.getLastName()))) {
+			if (customerVo != null && (StringUtils.hasText(customerVo.getFirstName()) || StringUtils.hasText(customerVo.getLastName()))) {
 
-				if (StringUtils.hasText(vo.getFirstName())) {
-					List<CustomerEntity> entities = dao.findByFirstName(vo.getFirstName());
+				return findCustomerByFirstNameOrLastName(customerVo.getFirstName(), customerVo.getLastName());
+			}
+		} catch (Exception exception) {
+			log.error("And error occured while finding by first name or last name.", exception);
+			throw new RuntimeException(exception);
+		}
+		return null;
+	}
+	
+	/**
+	 * USe this method to get all the customers with matching first or last name.
+	 * Please note , if the first name matches, then the last name will not be used.
+	 * If there is no customer with the given first name, then only the last name will
+	 * be consulted.
+	 * 
+	 * Also, Please note that it is an exact match search. It is not a like search.
+	 * So, you have to give the exact match of the First Name or the Last Name.
+	 * 
+	 * @param firstName : First Name of the customer.
+	 * @param lastName : Last Name of the customer.
+	 * @return : The found customers. If not found, then null.
+	 */
+	public List<CustomerVo> findCustomerByFirstNameOrLastName(String firstName, String lastName) {
+
+		try {
+			if ( StringUtils.hasText(firstName) || StringUtils.hasText(firstName)) {
+
+				if (StringUtils.hasText(firstName)) {
+					List<CustomerEntity> entities = dao.findByFirstName(firstName);
 
 					if (!CollectionUtils.isEmpty(entities)) {
 						return buildEntitiesFromVosAndReturn(entities);
 					}
 				}
 
-				if (StringUtils.hasText(vo.getLastName())) {
+				if (StringUtils.hasText(lastName)) {
 
-					List<CustomerEntity> entities = dao.findByLastName(vo.getLastName());
+					List<CustomerEntity> entities = dao.findByLastName(lastName);
 
 					if (!CollectionUtils.isEmpty(entities)) {
 						return buildEntitiesFromVosAndReturn(entities);
