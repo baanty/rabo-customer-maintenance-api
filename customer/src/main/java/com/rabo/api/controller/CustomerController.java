@@ -18,6 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 public class CustomerController {
 
+	/*
 	@Autowired
 	CustomerService service;
 
