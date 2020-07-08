@@ -188,7 +188,8 @@ public class CustomerService {
 
 				if ( optionalEntity.isPresent() ) {
 					entity = optionalEntity.get();
-					entity.setAddress(addressEntity);
+					entity.getAddress().setCity(addressEntity.getCity());
+					entity.getAddress().setStreetName(addressEntity.getStreetName());
 				}
 				
 			}
