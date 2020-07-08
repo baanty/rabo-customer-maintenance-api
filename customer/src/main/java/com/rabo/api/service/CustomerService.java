@@ -7,6 +7,7 @@ import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
 import com.rabo.api.dao.CustomerDao;
@@ -15,19 +16,152 @@ import com.rabo.api.service.entity.CustomerEntity;
 import com.rabo.api.vo.AddressVo;
 import com.rabo.api.vo.CustomerVo;
 
+import lombok.extern.slf4j.Slf4j;
+
+/**
+ * 
+ * @author : Pijush Kanti Das.
+ * This service will find the Customers, save the customers and update the customers.
+ * 
+ *
+ */
+@Slf4j
 @Service
 public class CustomerService {
 
 	@Autowired
 	CustomerDao dao;
-	
+
+	/**
+	 * Use this method to find all the customers from teh database.
+	 * @return
+	 */
 	List<CustomerVo> findAllCustomers() {
-		Iterable<CustomerEntity> customers = dao.findAll();
-		
-		if ( customers != null ) {
-			List<CustomerVo> vos = StreamSupport
-											.stream(customers.spliterator(), false)
-											.filter(entity -> entity != null)
+
+		try {
+			Iterable<CustomerEntity> customers = dao.findAll();
+
+			if (customers != null) {
+				return buildEntitiesFromVosAndReturn(customers);
+			}
+		} catch (Exception exception) {
+			log.error("And error occured while finding all the customers.", exception);
+			throw new RuntimeException(exception);
+		}
+		return null;
+	}
+
+	/**
+	 * Use this method to save a new customer. However, if a new customer is already existing,
+	 * it will update the old customer.
+	 * @param vo : The API input value object.
+	 * @return : The created customer.
+	 */
+	CustomerVo addNewCustomer(CustomerVo vo) {
+		saveCustomer(vo);
+		return vo;
+	}
+
+	/**
+	 * Use this method to find a customer by his id.
+	 * 
+	 * @param id : The ID of the customer
+	 * @return : The found customer. If not found, gives a null return.
+	 */
+	CustomerVo findCustomerById(int id) {
+		try {
+			Optional<CustomerEntity> optionalEntity = dao.findById(id);
+
+			if (optionalEntity.isPresent()) {
+
+				CustomerEntity entity = optionalEntity.get();
+
+				AddressEntity address = entity.getAddress() != null ? entity.getAddress()
+						: new AddressEntity(0, null, null, entity);
+				AddressVo addressVo = AddressVo.builder().city(address.getCity()).streetName(address.getStreetName())
+						.build();
+				return CustomerVo.builder().firstName(entity.getFirstName()).lastName(entity.getLastName())
+						.age(entity.getAge()).address(addressVo).build();
+			}
+		} catch (Exception exception) {
+			log.error("And error occured while finding all the customers.", exception);
+			throw new RuntimeException(exception);
+		}
+		return null;
+	}
+
+	/**
+	 * USe this method to get all the customers with matching first or last name.
+	 * Please note , if the first name matches, then the last name will not be used.
+	 * If there is no customer with the given first name, then only the last name will
+	 * be consulted.
+	 * 
+	 * @param vo : The input Value object.
+	 * @return : The found customers. If not found, then null.
+	 */
+	List<CustomerVo> findCustomerByFirstNameOrLastName(CustomerVo vo) {
+
+		try {
+			if (vo != null && (StringUtils.hasText(vo.getFirstName()) || StringUtils.hasText(vo.getLastName()))) {
+
+				if (StringUtils.hasText(vo.getFirstName())) {
+					List<CustomerEntity> entities = dao.findByFirstName(vo.getFirstName());
+
+					if (!CollectionUtils.isEmpty(entities)) {
+						return buildEntitiesFromVosAndReturn(entities);
+					}
+				}
+
+				if (StringUtils.hasText(vo.getLastName())) {
+
+					List<CustomerEntity> entities = dao.findByLastName(vo.getLastName());
+
+					if (!CollectionUtils.isEmpty(entities)) {
+						return buildEntitiesFromVosAndReturn(entities);
+					}
+				}
+			}
+		} catch (Exception exception) {
+			log.error("And error occured while finding by first name or last name.", exception);
+			throw new RuntimeException(exception);
+		}
+		return null;
+	}
+
+	/**
+	 * Use this method to update the address of the customer. But if the customer does not already exist,
+	 * you will get a null return.
+	 * 
+	 * @param vo : The customer, whose address has to be saved.
+	 * @return : The updated customer.
+	 */
+	CustomerVo updateAddress(CustomerVo vo) {
+
+		if (vo != null && vo.getAddress() != null && findCustomerById(vo.getId()) != null  ) {
+			saveCustomer(vo);
+		}
+		return vo;
+	}
+
+	private void saveCustomer(CustomerVo vo) {
+		try {
+			AddressEntity addressEntity = (vo != null && vo.getAddress() != null)
+					? AddressEntity.builder().city(vo.getAddress().getCity())
+							.streetName(vo.getAddress().getStreetName()).build()
+					: new AddressEntity(0, null, null, null);
+			CustomerEntity entity = CustomerEntity.builder().firstName(vo.getFirstName()).lastName(vo.getLastName())
+					.age(vo.getAge()).address(addressEntity).build();
+			dao.save(entity);
+		} catch (Exception exception) {
+			log.error("And error occured while saving the customer.", exception);
+			throw new RuntimeException(exception);
+		}
+	}
+
+	private List<CustomerVo> buildEntitiesFromVosAndReturn(Iterable<CustomerEntity> entities) {
+
+		try {
+			List<CustomerVo> vos = StreamSupport.stream(entities.spliterator(), false).filter(entity -> entity != null)
 					.map(entity -> {
 
 						AddressEntity address = entity.getAddress() != null ? entity.getAddress()
@@ -37,122 +171,12 @@ public class CustomerService {
 						CustomerVo vo = CustomerVo.builder().firstName(entity.getFirstName())
 								.lastName(entity.getLastName()).age(entity.getAge()).address(addressVo).build();
 						return vo;
-					})
-											.collect(Collectors.toList());
-			
+					}).collect(Collectors.toList());
 			return vos;
+		} catch (Exception exception) {
+			log.error("And error occured while converting from entity to vo.", exception);
+			throw new RuntimeException(exception);
 		}
-		return null;
-	}
-	
-	
-	CustomerVo addNewCustomer(CustomerVo vo) {
-		AddressEntity addressEntity = 
-				( vo != null && vo.getAddress() != null ) ?
-				AddressEntity.builder()
-							.city(vo.getAddress().getCity())
-							.streetName(vo.getAddress().getStreetName())
-							.build() 
-				: new AddressEntity(0, null, null, null);
-		CustomerEntity entity = CustomerEntity.builder()
-												.firstName(vo.getFirstName())
-												.lastName(vo.getLastName())
-												.age(vo.getAge())
-												.address(addressEntity).build();
-		dao.save(entity);
-		return vo;
-	}
-	
-	
-	CustomerVo findCustomerById(int id) {
-		Optional<CustomerEntity> optionalEntity = dao.findById(id);
-		
-		if ( optionalEntity.isPresent() ) {
-			
-			
-			CustomerEntity entity = optionalEntity.get();
-			
-			AddressEntity address = entity.getAddress() != null ? entity.getAddress()
-					: new AddressEntity(0, null, null, entity);
-			AddressVo addressVo = AddressVo.builder().city(address.getCity())
-					.streetName(address.getStreetName()).build();
-			return CustomerVo.builder()
-					.firstName(entity.getFirstName())
-					.lastName(entity.getLastName())
-					.age(entity.getAge())
-					.address(addressVo)
-					.build();
-		}
-		return null;
-	}
-	
-	CustomerVo findCustomerByFirstNameOrLastName(CustomerVo vo) {
-		
-		if (vo != null && ( StringUtils.hasText(vo.getFirstName()) || StringUtils.hasText(vo.getLastName()) )) {
-			
-			CustomerEntity entity = dao.findByFirstName(vo.getFirstName()).isEmpty() ? 
-			
-			if ( StringUtils.hasText(vo.getFirstName()) ) {
-				
-			}
-
-			Optional<CustomerEntity> optionalEntity = dao.findById(id);
-			
-			if ( optionalEntity.isPresent() ) {
-				
-				
-				CustomerEntity entity = optionalEntity.get();
-				
-				AddressEntity address = entity.getAddress() != null ? entity.getAddress()
-						: new AddressEntity(0, null, null, entity);
-				AddressVo addressVo = AddressVo.builder().city(address.getCity())
-						.streetName(address.getStreetName()).build();
-				return CustomerVo.builder()
-						.firstName(entity.getFirstName())
-						.lastName(entity.getLastName())
-						.age(entity.getAge())
-						.address(addressVo)
-						.build();
-			}
-			
-		}
-
-		return null;
-	}
-	
-	
-	
-/*
-	@RequestMapping("/findByCode/{airportCode}")
-	List<AirportVo> findByAirportCodeContaining(@PathVariable String airportCode) {
-		List<AirportEntity> airportEntities = service.findByAirportCodeContaining(airportCode);
-
-		if (!CollectionUtils.isEmpty(airportEntities)) {
-			List<AirportVo> vos =  airportEntities
-					.stream()
-					.map(ApiUtil::converFromEntityToVo)
-					.collect(Collectors.toList());
-			return vos;
-					
-		}
-
-		return null;
 	}
 
-	@RequestMapping("/findByDescription/{airportDescription}")
-	List<AirportVo> findByAirportDescriptionContaining(@PathVariable String airportDescription) {
-		List<AirportEntity> airportEntities = service.findByAirportDescriptionContaining(airportDescription);
-
-		if (!CollectionUtils.isEmpty(airportEntities)) {
-
-			List<AirportVo> vos = airportEntities
-					.stream()
-					.map(ApiUtil::converFromEntityToVo)
-					.collect(Collectors.toList());
-					
-			return vos;
-		}
-
-		return null;
-	}
-*/}
+}
