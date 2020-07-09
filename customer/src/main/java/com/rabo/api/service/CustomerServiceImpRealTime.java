@@ -25,7 +25,7 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * 
  * @author : Pijush Kanti Das.
- * This service will find the Customers, save the customers and update the customers.
+ * This controller will find the Customers, save the customers and update the customers.
  * 
  *
  */
@@ -152,7 +152,7 @@ public class CustomerServiceImpRealTime implements CustomerService {
 	public List<CustomerTransferObject> findCustomerByFirstNameOrLastName(String firstName, String lastName) {
 
 		try {
-			if ( StringUtils.hasText(firstName) || StringUtils.hasText(firstName)) {
+			if ( StringUtils.hasText(firstName) || StringUtils.hasText(lastName)) {
 
 				if (StringUtils.hasText(firstName)) {
 					List<CustomerEntity> entities = customerRepository.findByFirstName(firstName);
@@ -205,6 +205,7 @@ public class CustomerServiceImpRealTime implements CustomerService {
 					.age(vo.getAge()).address(addressEntity).build();
 			
 			if ( isUpdate ) {
+
 				Optional<CustomerEntity> optionalEntity = customerRepository.findById(vo.getId());
 
 				if ( optionalEntity.isPresent() ) {

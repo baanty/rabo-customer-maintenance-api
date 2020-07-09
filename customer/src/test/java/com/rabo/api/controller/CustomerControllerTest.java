@@ -1,12 +1,12 @@
-package com.rabo.api.service;
+package com.rabo.api.controller;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 
 import java.util.List;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,24 +14,25 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.MethodMode;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.rabo.api.to.AddressTransferObject;
-import com.rabo.api.to.CustomerTransferObject;
+import com.rabo.api.exception.GenericCustomerApplicationRuntimeException;
+import com.rabo.api.jsonbody.AddressJsonBody;
+import com.rabo.api.jsonbody.CustomerJsonBody;
 
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class CustomerServiceTest {
+class CustomerControllerTest {
 
 	@Autowired
-	CustomerService service;
+	CustomerController controller;
 	
 	@Test
 	public void testFindAll() {
-		List<CustomerTransferObject> allCustomers = service.findAllCustomers();
+		List<CustomerJsonBody> allCustomers = controller.findAllCustomers();
 		assertNotNull(allCustomers);
 		assertEquals(3, allCustomers.size());
-		CustomerTransferObject trOne = allCustomers.get(0);
-		CustomerTransferObject trTwo = allCustomers.get(1);
+		CustomerJsonBody trOne = allCustomers.get(0);
+		CustomerJsonBody trTwo = allCustomers.get(1);
 		assertNotNull(trOne);
 		assertNotNull(trTwo);
 		assertEquals(1, trOne.getId());
@@ -49,31 +50,31 @@ public class CustomerServiceTest {
 	@Test
 	@DirtiesContext(methodMode = MethodMode.AFTER_METHOD)
 	public void testAddNewCustomer() {
-		AddressTransferObject newAddressTransferObject = 
-				AddressTransferObject.builder()
+		AddressJsonBody newAddressTransferObject = 
+				AddressJsonBody.builder()
 									.streetName("Lake Washington Boulevard  East")
 									.city("Seattle")
 									.build();
-		CustomerTransferObject newCustomerTransferObject =
-				CustomerTransferObject.builder()
+		CustomerJsonBody newCustomerJsonBody =
+				CustomerJsonBody.builder()
 									.id(12)
 									.firstName("Kurt")
 									.lastName("Cobain")
 									.age(27)
 									.address(newAddressTransferObject)
 									.build();
-		service.addNewCustomer(newCustomerTransferObject);
+		controller.addNewCustomer(newCustomerJsonBody);
 		
-		List<CustomerTransferObject> allCustomers = service.findAllCustomers();
+		List<CustomerJsonBody> allCustomers = controller.findAllCustomers();
 		assertNotNull(allCustomers);
 		assertEquals(4, allCustomers.size());
-		CustomerTransferObject newCustomer = allCustomers.get(3);
+		CustomerJsonBody newCustomer = allCustomers.get(3);
 		assertNotNull(newCustomer);
 		assertEquals(8, newCustomer.getId());
 		assertEquals("Kurt", newCustomer.getFirstName());
 		assertEquals("Cobain", newCustomer.getLastName());
 		
-		AddressTransferObject newAddress = newCustomer.getAddress();
+		AddressJsonBody newAddress = newCustomer.getAddress();
 		assertNotNull(newAddress);
 		assertEquals("Lake Washington Boulevard  East", newAddress.getStreetName());
 		assertEquals("Seattle", newAddress.getCity());
@@ -85,7 +86,7 @@ public class CustomerServiceTest {
 	
 	@Test
 	public void testCustomerById_When_Found() {
-		CustomerTransferObject customer = service.findCustomerById(1);
+		CustomerJsonBody customer = controller.findCustomerById(1);
 		assertNotNull(customer);
 		assertEquals(1, customer.getId());
 		assertEquals("Pijush K", customer.getFirstName());
@@ -95,21 +96,22 @@ public class CustomerServiceTest {
 	
 	@Test
 	public void testCustomerById_When_Not_Found() {
-		CustomerTransferObject customer = service.findCustomerById(4);
-		assertNull(customer);
+		Assertions.assertThrows( 
+				GenericCustomerApplicationRuntimeException.class, () 
+					-> controller.findCustomerById(4));
 	}
 	
 	
 	@Test
 	public void testFindCustomerByFirstName_WhenFound_by_To() {
-		CustomerTransferObject toToSearch = CustomerTransferObject
+		CustomerJsonBody toToSearch = CustomerJsonBody
 												.builder()
 												.firstName("Pijush K")
 												.build();
-		List<CustomerTransferObject> allCustomers = service.findCustomerByFirstNameOrLastName(toToSearch);
+		List<CustomerJsonBody> allCustomers = controller.findCustomerByFirstNameOrLastName(toToSearch);
 		assertNotNull(allCustomers);
 		assertEquals(1, allCustomers.size());
-		CustomerTransferObject trOne = allCustomers.get(0);
+		CustomerJsonBody trOne = allCustomers.get(0);
 		assertNotNull(trOne);
 		assertEquals(1, trOne.getId());
 		assertEquals("Pijush K", trOne.getFirstName());
@@ -119,14 +121,14 @@ public class CustomerServiceTest {
 	
 	@Test
 	public void testFindCustomerByLastName_WhenFound_by_To() {
-		CustomerTransferObject toToSearch = CustomerTransferObject
+		CustomerJsonBody toToSearch = CustomerJsonBody
 												.builder()
 												.lastName("Das")
 												.build();
-		List<CustomerTransferObject> allCustomers = service.findCustomerByFirstNameOrLastName(toToSearch);
+		List<CustomerJsonBody> allCustomers = controller.findCustomerByFirstNameOrLastName(toToSearch);
 		assertNotNull(allCustomers);
 		assertEquals(1, allCustomers.size());
-		CustomerTransferObject trOne = allCustomers.get(0);
+		CustomerJsonBody trOne = allCustomers.get(0);
 		assertNotNull(trOne);
 		assertEquals(1, trOne.getId());
 		assertEquals("Pijush K", trOne.getFirstName());
@@ -136,21 +138,22 @@ public class CustomerServiceTest {
 	
 	@Test
 	public void testFindCustomerByFIrstNameOrLastName_When_Not_Found_by_To() {
-		CustomerTransferObject toToSearch = CustomerTransferObject
+		CustomerJsonBody toToSearch = CustomerJsonBody
 												.builder()
 												.firstName("Curt")
 												.lastName("Kobain")
 												.build();
-		List<CustomerTransferObject> allCustomers = service.findCustomerByFirstNameOrLastName(toToSearch);
-		assertNull(allCustomers);
+		List<CustomerJsonBody> allCustomers = controller.findCustomerByFirstNameOrLastName(toToSearch);
+		assertNotNull(allCustomers);
+		assertEquals(0, allCustomers.size());
 	}
 	
 	@Test
 	public void testFindCustomerByFirstName_WhenFound_by_property() {
-		List<CustomerTransferObject> allCustomers = service.findCustomerByFirstNameOrLastName("Pijush K", null);
+		List<CustomerJsonBody> allCustomers = controller.findCustomerByFirstNameOrLastName("Pijush K", null);
 		assertNotNull(allCustomers);
 		assertEquals(1, allCustomers.size());
-		CustomerTransferObject trOne = allCustomers.get(0);
+		CustomerJsonBody trOne = allCustomers.get(0);
 		assertNotNull(trOne);
 		assertEquals(1, trOne.getId());
 		assertEquals("Pijush K", trOne.getFirstName());
@@ -160,10 +163,10 @@ public class CustomerServiceTest {
 	
 	@Test
 	public void testFindCustomerByLastName_WhenFound_by_property() {
-		List<CustomerTransferObject> allCustomers = service.findCustomerByFirstNameOrLastName(null, "Das");
+		List<CustomerJsonBody> allCustomers = controller.findCustomerByFirstNameOrLastName(null, "Das");
 		assertNotNull(allCustomers);
 		assertEquals(1, allCustomers.size());
-		CustomerTransferObject trOne = allCustomers.get(0);
+		CustomerJsonBody trOne = allCustomers.get(0);
 		assertNotNull(trOne);
 		assertEquals(1, trOne.getId());
 		assertEquals("Pijush K", trOne.getFirstName());
@@ -173,30 +176,31 @@ public class CustomerServiceTest {
 	
 	@Test
 	public void testFindCustomerByFIrstNameOrLastName_When_Not_Found_by_property() {
-		List<CustomerTransferObject> allCustomers = service.findCustomerByFirstNameOrLastName("Curt", "Kobain");
-		assertNull(allCustomers);
+		List<CustomerJsonBody> allCustomers = controller.findCustomerByFirstNameOrLastName("Curt", "Kobain");
+		assertNotNull(allCustomers);
+		assertEquals(0, allCustomers.size());
 	}
 	
 	@Test
 	@DirtiesContext(methodMode = MethodMode.AFTER_METHOD)
 	public void testUpdateAddress() {
 		
-		AddressTransferObject newAddressTransferObject = 
-				AddressTransferObject.builder()
+		AddressJsonBody newAddressJsonBody = 
+				AddressJsonBody.builder()
 									.streetName("Meteorstraat")
 									.city("Hilversum")
 									.build();
-		CustomerTransferObject newCustomerTransferObject =
-				CustomerTransferObject.builder()
+		CustomerJsonBody newCustomerJsonBody =
+				CustomerJsonBody.builder()
 									.id(1)
 									.firstName("Pijush")
 									.lastName("Cobain")
 									.age(27)
-									.address(newAddressTransferObject)
+									.address(newAddressJsonBody)
 									.build();
-		service.updateAddress(newCustomerTransferObject);
+		controller.updateAddress(newCustomerJsonBody);
 		
-		CustomerTransferObject customer = service.findCustomerById(1);
+		CustomerJsonBody customer = controller.findCustomerById(1);
 		assertNotNull(customer);
 		assertEquals(1, customer.getId());
 		assertNotNull(customer.getAddress());
