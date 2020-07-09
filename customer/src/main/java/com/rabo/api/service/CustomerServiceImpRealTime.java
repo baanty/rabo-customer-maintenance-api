@@ -97,7 +97,7 @@ public class CustomerServiceImpRealTime implements CustomerService {
 				CustomerEntity entity = optionalEntity.get();
 
 				AddressEntity address = entity.getAddress() != null ? entity.getAddress()
-						: new AddressEntity(0, null, null, entity);
+						: new AddressEntity(0, null, null);
 				AddressTransferObject addressTransferObject = AddressTransferObject.builder().id(address.getId()).city(address.getCity()).streetName(address.getStreetName())
 						.build();
 				return CustomerTransferObject.builder().id(entity.getId()).firstName(entity.getFirstName()).lastName(entity.getLastName())
@@ -182,16 +182,16 @@ public class CustomerServiceImpRealTime implements CustomerService {
 	 * Use this method to update the address of the customer. But if the customer does not already exist,
 	 * you will get a null return.
 	 * 
-	 * @param vo : The customer, whose address has to be saved.
+	 * @param valueObject : The customer, whose address has to be saved.
 	 * @return : The updated customer.
 	 */
 	@Override
-	public CustomerTransferObject updateAddress(CustomerTransferObject vo) {
+	public CustomerTransferObject updateAddress(CustomerTransferObject valueObject) {
 
-		if (vo != null && vo.getAddress() != null  ) {
-			saveCustomer(vo, true);
+		if (valueObject != null && valueObject.getAddress() != null  ) {
+			saveCustomer(valueObject, true);
 		}
-		return vo;
+		return valueObject;
 	}
 
 	private void saveCustomer(CustomerTransferObject vo, boolean isUpdate) {
@@ -200,7 +200,7 @@ public class CustomerServiceImpRealTime implements CustomerService {
 			AddressEntity addressEntity = (vo != null && vo.getAddress() != null)
 					? AddressEntity.builder().city(vo.getAddress().getCity())
 							.streetName(vo.getAddress().getStreetName()).build()
-					: new AddressEntity(0, null, null, null);
+					: new AddressEntity(0, null, null);
 			CustomerEntity entity = CustomerEntity.builder().firstName(vo.getFirstName()).lastName(vo.getLastName())
 					.age(vo.getAge()).address(addressEntity).build();
 			
@@ -228,7 +228,7 @@ public class CustomerServiceImpRealTime implements CustomerService {
 					.map(entity -> {
 
 						AddressEntity address = entity.getAddress() != null ? entity.getAddress()
-								: new AddressEntity(0, null, null, entity);
+								: new AddressEntity(0, null, null);
 						AddressTransferObject addressTransferObject = AddressTransferObject.builder().id(address.getId()).city(address.getCity())
 								.streetName(address.getStreetName()).build();
 						CustomerTransferObject vo = CustomerTransferObject.builder().id(entity.getId()).firstName(entity.getFirstName())

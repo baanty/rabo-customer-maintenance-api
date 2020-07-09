@@ -58,9 +58,9 @@ public interface CustomerService {
 	 * Use this method to update the address of the customer. But if the customer does not already exist,
 	 * you will get a null return.
 	 * 
-	 * @param vo : The customer, whose address has to be saved.
+	 * @param valueObject : The customer, whose address has to be saved.
 	 * @return : The updated customer.
 	 */
-	CustomerTransferObject updateAddress(CustomerTransferObject vo);
+	CustomerTransferObject updateAddress(CustomerTransferObject valueObject);
 
 }
