@@ -78,7 +78,7 @@ public class CustomerController {
 			CustomerTransferObject customerTransferObject = service.findCustomerById(id);
 			
 			if ( customerTransferObject == null ) {
-				throw new GenericCustomerApplicationRuntimeException(id,  new RuntimeException("Ca not find customer with id - " + id));				
+				throw new GenericCustomerApplicationRuntimeException(id,  new RuntimeException("Can not find customer with id - " + id));				
 			}
 			return buildCustomerJsonBodyFromCustomerTransferObject(service.findCustomerById(id));
 		} catch (Exception exception) {
