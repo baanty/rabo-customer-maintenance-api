@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import lombok.AccessLevel;
@@ -20,10 +21,12 @@ import lombok.NoArgsConstructor;
 @Table(name = "ADDRESS")
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
+
 public class AddressEntity {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "customer_generator")
+	@SequenceGenerator(name="customer_generator", sequenceName = "customer_seq", initialValue = 8 )
 	private int id;
 
 	@Column(name = "STREET_NAME")

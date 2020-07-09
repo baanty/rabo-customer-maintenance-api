@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import lombok.AccessLevel;
@@ -25,7 +26,8 @@ import lombok.NoArgsConstructor;
 public class CustomerEntity {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "customer_generator")
+	@SequenceGenerator(name="customer_generator", sequenceName = "customer_seq", initialValue = 8 )
 	private int id;
 
 	@Column(name = "FIRST_NAME")
@@ -40,5 +42,5 @@ public class CustomerEntity {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "ADDRESS_ID", referencedColumnName = "id")
 	private AddressEntity address;
-
+	
 }

@@ -10,6 +10,7 @@ import com.rabo.api.service.entity.CustomerEntity;
 
 public interface CustomerDao extends CrudRepository<CustomerEntity, Integer> {
 	
+	
 	List<CustomerEntity> findByFirstName(String firstName);
 	
 	List<CustomerEntity> findByLastName(String lastName);

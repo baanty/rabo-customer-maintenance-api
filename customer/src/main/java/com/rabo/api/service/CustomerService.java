@@ -176,6 +176,7 @@ public class CustomerService {
 
 	private void saveCustomer(CustomerTransferObject vo, boolean isUpdate) {
 		try {
+
 			AddressEntity addressEntity = (vo != null && vo.getAddress() != null)
 					? AddressEntity.builder().city(vo.getAddress().getCity())
 							.streetName(vo.getAddress().getStreetName()).build()
