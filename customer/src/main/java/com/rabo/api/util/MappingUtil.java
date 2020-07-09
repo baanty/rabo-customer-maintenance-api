@@ -2,6 +2,8 @@ package com.rabo.api.util;
 
 import com.rabo.api.jsonbody.AddressJsonBody;
 import com.rabo.api.jsonbody.CustomerJsonBody;
+import com.rabo.api.service.entity.AddressEntity;
+import com.rabo.api.service.entity.CustomerEntity;
 import com.rabo.api.to.AddressTransferObject;
 import com.rabo.api.to.CustomerTransferObject;
 
@@ -85,4 +87,54 @@ public final class MappingUtil {
 		return customerTransferObject;
 	}
 
+	/**
+	 * Use this utility method to transform <code>CustomerEntity</code> into <code>CustomerTransferObject</code>
+	 * 
+	 * @param customerEntity : The input <code>CustomerEntity</code> object.
+	 * @return : THe fully built <code>CustomerTransferObject</code> object.
+	 */
+	public static final CustomerTransferObject buildTransferObjectFromBusinessObject(CustomerEntity customerEntity) {
+		
+		AddressEntity address = customerEntity.getAddress() != null ? 
+					customerEntity.getAddress()
+					: new AddressEntity(0, null, null);
+		AddressTransferObject addressTransferObject = AddressTransferObject
+							.builder()
+							.id(address.getId())
+							.city(address.getCity())
+							.streetName(address.getStreetName())
+							.build();
+		CustomerTransferObject customerTransferObject = CustomerTransferObject
+							.builder()
+							.id(customerEntity.getId())
+							.firstName(customerEntity.getFirstName())
+							.lastName(customerEntity.getLastName())
+							.age(customerEntity.getAge())
+							.address(addressTransferObject)
+							.build();
+		return customerTransferObject;
+	}
+	
+	/**
+	 * Use this utility method to transform <code>CustomerTransferObject</code> into <code>CustomerEntity</code>
+	 * 
+	 * @param customerEntity : The input <code>CustomerTransferObject</code> object.
+	 * @return : THe fully built <code>CustomerEntity</code> object.
+	 */
+	public static final CustomerEntity buildBusinessObjectFromTransferObject(CustomerTransferObject customerTransferObject) {
+		AddressEntity addressEntity = (customerTransferObject != null && customerTransferObject.getAddress() != null)
+										? AddressEntity
+												.builder()
+												.city(customerTransferObject.getAddress().getCity())
+												.streetName(customerTransferObject.getAddress().getStreetName()).build()
+												: new AddressEntity(0, null, null);
+		CustomerEntity customerEntity = CustomerEntity
+											.builder()
+											.firstName(customerTransferObject.getFirstName())
+											.lastName(customerTransferObject.getLastName())
+											.age(customerTransferObject.getAge())
+											.address(addressEntity)
+											.build();
+		return customerEntity;
+	}
 }

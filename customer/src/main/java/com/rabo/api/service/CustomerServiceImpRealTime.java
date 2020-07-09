@@ -15,10 +15,9 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
 import com.rabo.api.dao.CustomerRepository;
-import com.rabo.api.service.entity.AddressEntity;
 import com.rabo.api.service.entity.CustomerEntity;
-import com.rabo.api.to.AddressTransferObject;
 import com.rabo.api.to.CustomerTransferObject;
+import com.rabo.api.util.MappingUtil;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -93,15 +92,7 @@ public class CustomerServiceImpRealTime implements CustomerService {
 			Optional<CustomerEntity> optionalEntity = customerRepository.findById(id);
 
 			if (optionalEntity.isPresent()) {
-
-				CustomerEntity entity = optionalEntity.get();
-
-				AddressEntity address = entity.getAddress() != null ? entity.getAddress()
-						: new AddressEntity(0, null, null);
-				AddressTransferObject addressTransferObject = AddressTransferObject.builder().id(address.getId()).city(address.getCity()).streetName(address.getStreetName())
-						.build();
-				return CustomerTransferObject.builder().id(entity.getId()).firstName(entity.getFirstName()).lastName(entity.getLastName())
-						.age(entity.getAge()).address(addressTransferObject).build();
+				return MappingUtil.buildTransferObjectFromBusinessObject(optionalEntity.get());
 			}
 		} catch (Exception exception) {
 			log.error("And error occured while finding all the customers.", exception);
@@ -194,24 +185,19 @@ public class CustomerServiceImpRealTime implements CustomerService {
 		return valueObject;
 	}
 
-	private void saveCustomer(CustomerTransferObject vo, boolean isUpdate) {
+	private void saveCustomer(CustomerTransferObject customerTransferObject, boolean isUpdate) {
 		try {
 
-			AddressEntity addressEntity = (vo != null && vo.getAddress() != null)
-					? AddressEntity.builder().city(vo.getAddress().getCity())
-							.streetName(vo.getAddress().getStreetName()).build()
-					: new AddressEntity(0, null, null);
-			CustomerEntity entity = CustomerEntity.builder().firstName(vo.getFirstName()).lastName(vo.getLastName())
-					.age(vo.getAge()).address(addressEntity).build();
+			CustomerEntity entity = MappingUtil.buildBusinessObjectFromTransferObject(customerTransferObject);
 			
 			if ( isUpdate ) {
 
-				Optional<CustomerEntity> optionalEntity = customerRepository.findById(vo.getId());
+				Optional<CustomerEntity> optionalEntity = customerRepository.findById(customerTransferObject.getId());
 
 				if ( optionalEntity.isPresent() ) {
 					entity = optionalEntity.get();
-					entity.getAddress().setCity(addressEntity.getCity());
-					entity.getAddress().setStreetName(addressEntity.getStreetName());
+					entity.getAddress().setCity(customerTransferObject.getAddress().getCity());
+					entity.getAddress().setStreetName(customerTransferObject.getAddress().getStreetName());
 				}
 				
 			}
@@ -225,17 +211,11 @@ public class CustomerServiceImpRealTime implements CustomerService {
 	private List<CustomerTransferObject> buildEntitiesFromVosAndReturn(Iterable<CustomerEntity> entities) {
 
 		try {
-			List<CustomerTransferObject> vos = StreamSupport.stream(entities.spliterator(), false).filter(entity -> entity != null)
-					.map(entity -> {
-
-						AddressEntity address = entity.getAddress() != null ? entity.getAddress()
-								: new AddressEntity(0, null, null);
-						AddressTransferObject addressTransferObject = AddressTransferObject.builder().id(address.getId()).city(address.getCity())
-								.streetName(address.getStreetName()).build();
-						CustomerTransferObject vo = CustomerTransferObject.builder().id(entity.getId()).firstName(entity.getFirstName())
-								.lastName(entity.getLastName()).age(entity.getAge()).address(addressTransferObject).build();
-						return vo;
-					}).collect(Collectors.toList());
+			List<CustomerTransferObject> vos = StreamSupport
+					.stream(entities.spliterator(), false)
+					.filter(entity -> entity != null)
+					.map(MappingUtil::buildTransferObjectFromBusinessObject)
+					.collect(Collectors.toList());
 			return vos;
 		} catch (Exception exception) {
 			log.error("And error occured while converting from entity to vo.", exception);
