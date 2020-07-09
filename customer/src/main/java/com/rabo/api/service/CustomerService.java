@@ -16,8 +16,8 @@ import org.springframework.util.StringUtils;
 import com.rabo.api.dao.CustomerDao;
 import com.rabo.api.service.entity.AddressEntity;
 import com.rabo.api.service.entity.CustomerEntity;
-import com.rabo.api.vo.AddressVo;
-import com.rabo.api.vo.CustomerVo;
+import com.rabo.api.to.AddressTransferObject;
+import com.rabo.api.to.CustomerTransferObject;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -40,7 +40,7 @@ public class CustomerService {
 	 * Use this method to find all the customers from teh database.
 	 * @return
 	 */
-	public List<CustomerVo> findAllCustomers() {
+	public List<CustomerTransferObject> findAllCustomers() {
 
 		try {
 			Iterable<CustomerEntity> customers = dao.findAll();
@@ -61,7 +61,7 @@ public class CustomerService {
 	 * @param vo : The API input value object.
 	 * @return : The created customer.
 	 */
-	public CustomerVo addNewCustomer(CustomerVo vo) {
+	public CustomerTransferObject addNewCustomer(CustomerTransferObject vo) {
 		saveCustomer(vo, false);
 		return vo;
 	}
@@ -72,7 +72,7 @@ public class CustomerService {
 	 * @param id : The ID of the customer
 	 * @return : The found customer. If not found, gives a null return.
 	 */
-	public CustomerVo findCustomerById(int id) {
+	public CustomerTransferObject findCustomerById(int id) {
 		try {
 			Optional<CustomerEntity> optionalEntity = dao.findById(id);
 
@@ -82,10 +82,10 @@ public class CustomerService {
 
 				AddressEntity address = entity.getAddress() != null ? entity.getAddress()
 						: new AddressEntity(0, null, null, entity);
-				AddressVo addressVo = AddressVo.builder().id(address.getId()).city(address.getCity()).streetName(address.getStreetName())
+				AddressTransferObject addressTransferObject = AddressTransferObject.builder().id(address.getId()).city(address.getCity()).streetName(address.getStreetName())
 						.build();
-				return CustomerVo.builder().id(entity.getId()).firstName(entity.getFirstName()).lastName(entity.getLastName())
-						.age(entity.getAge()).address(addressVo).build();
+				return CustomerTransferObject.builder().id(entity.getId()).firstName(entity.getFirstName()).lastName(entity.getLastName())
+						.age(entity.getAge()).address(addressTransferObject).build();
 			}
 		} catch (Exception exception) {
 			log.error("And error occured while finding all the customers.", exception);
@@ -100,15 +100,15 @@ public class CustomerService {
 	 * If there is no customer with the given first name, then only the last name will
 	 * be consulted.
 	 * 
-	 * @param customerVo : The input Value object.
+	 * @param customerTransferObject : The input Value object.
 	 * @return : The found customers. If not found, then null.
 	 */
-	public List<CustomerVo> findCustomerByFirstNameOrLastName(CustomerVo customerVo) {
+	public List<CustomerTransferObject> findCustomerByFirstNameOrLastName(CustomerTransferObject customerTransferObject) {
 
 		try {
-			if (customerVo != null && (StringUtils.hasText(customerVo.getFirstName()) || StringUtils.hasText(customerVo.getLastName()))) {
+			if (customerTransferObject != null && (StringUtils.hasText(customerTransferObject.getFirstName()) || StringUtils.hasText(customerTransferObject.getLastName()))) {
 
-				return findCustomerByFirstNameOrLastName(customerVo.getFirstName(), customerVo.getLastName());
+				return findCustomerByFirstNameOrLastName(customerTransferObject.getFirstName(), customerTransferObject.getLastName());
 			}
 		} catch (Exception exception) {
 			log.error("And error occured while finding by first name or last name.", exception);
@@ -130,7 +130,7 @@ public class CustomerService {
 	 * @param lastName : Last Name of the customer.
 	 * @return : The found customers. If not found, then null.
 	 */
-	public List<CustomerVo> findCustomerByFirstNameOrLastName(String firstName, String lastName) {
+	public List<CustomerTransferObject> findCustomerByFirstNameOrLastName(String firstName, String lastName) {
 
 		try {
 			if ( StringUtils.hasText(firstName) || StringUtils.hasText(firstName)) {
@@ -166,7 +166,7 @@ public class CustomerService {
 	 * @param vo : The customer, whose address has to be saved.
 	 * @return : The updated customer.
 	 */
-	public CustomerVo updateAddress(CustomerVo vo) {
+	public CustomerTransferObject updateAddress(CustomerTransferObject vo) {
 
 		if (vo != null && vo.getAddress() != null  ) {
 			saveCustomer(vo, true);
@@ -174,7 +174,7 @@ public class CustomerService {
 		return vo;
 	}
 
-	private void saveCustomer(CustomerVo vo, boolean isUpdate) {
+	private void saveCustomer(CustomerTransferObject vo, boolean isUpdate) {
 		try {
 			AddressEntity addressEntity = (vo != null && vo.getAddress() != null)
 					? AddressEntity.builder().city(vo.getAddress().getCity())
@@ -200,18 +200,18 @@ public class CustomerService {
 		}
 	}
 
-	private List<CustomerVo> buildEntitiesFromVosAndReturn(Iterable<CustomerEntity> entities) {
+	private List<CustomerTransferObject> buildEntitiesFromVosAndReturn(Iterable<CustomerEntity> entities) {
 
 		try {
-			List<CustomerVo> vos = StreamSupport.stream(entities.spliterator(), false).filter(entity -> entity != null)
+			List<CustomerTransferObject> vos = StreamSupport.stream(entities.spliterator(), false).filter(entity -> entity != null)
 					.map(entity -> {
 
 						AddressEntity address = entity.getAddress() != null ? entity.getAddress()
 								: new AddressEntity(0, null, null, entity);
-						AddressVo addressVo = AddressVo.builder().id(address.getId()).city(address.getCity())
+						AddressTransferObject addressTransferObject = AddressTransferObject.builder().id(address.getId()).city(address.getCity())
 								.streetName(address.getStreetName()).build();
-						CustomerVo vo = CustomerVo.builder().id(entity.getId()).firstName(entity.getFirstName())
-								.lastName(entity.getLastName()).age(entity.getAge()).address(addressVo).build();
+						CustomerTransferObject vo = CustomerTransferObject.builder().id(entity.getId()).firstName(entity.getFirstName())
+								.lastName(entity.getLastName()).age(entity.getAge()).address(addressTransferObject).build();
 						return vo;
 					}).collect(Collectors.toList());
 			return vos;

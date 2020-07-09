@@ -1,4 +1,4 @@
-package com.rabo.api.vo;
+package com.rabo.api.to;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 @Builder
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
-public class CustomerVo 
+public class CustomerTransferObject 
 {
 
 	private int id;
@@ -19,6 +19,6 @@ public class CustomerVo
 	
 	private int age;
 	
-	private AddressVo address;
+	private AddressTransferObject address;
 
 }
