@@ -1,18 +1,14 @@
 package com.rabo.api.dao;
 
 
-import java.util.List;
-
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import com.rabo.api.service.entity.CustomerEntity;
 
-
-public interface CustomerDao extends CrudRepository<CustomerEntity, Integer> {
-	
-	
-	List<CustomerEntity> findByFirstName(String firstName);
-	
-	List<CustomerEntity> findByLastName(String lastName);
+@Repository
+@Profile({"TEST", "ACCP", "PROD"})
+public interface CustomerDao extends  CrudRepository<CustomerEntity, Integer>, CustomerRepository {
 
 }
