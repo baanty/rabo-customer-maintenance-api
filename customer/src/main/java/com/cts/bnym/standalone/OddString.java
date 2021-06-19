@@ -2,6 +2,8 @@ package com.cts.bnym.standalone;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 class OddString {
 	/*
@@ -40,5 +42,16 @@ class OddString {
 			return "ODD";
 		else
 			return "EVEN";
+	}
+	
+	
+	public static String solveByStreaming(int m, List<String> s) {
+		
+		return String.join("", s).chars().sum() % 2 == 0 ? "EVEN" : "ODD";
+
+	}
+	
+	private static int getAsciiValue(char c) {
+		return (int)c;
 	}
 }
