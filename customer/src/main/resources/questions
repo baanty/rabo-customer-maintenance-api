@@ -144,6 +144,7 @@ The problem to solve was, how would you read the file and write the solution to 
 
 
 ## Ericsson interview questions
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 1) What is your techinology stack, current role ?
 2) What is the architechture of your project?
@@ -168,5 +169,8 @@ The problem to solve was, how would you read the file and write the solution to 
     d) How much time will you need to complete this activity, with the team?
     e) How will you handle the costing of the project?
     
+15) What is a load balancer? 
+16) How many types of load balancers are there?
+17) Which types of load balancers did you use?
 
 
