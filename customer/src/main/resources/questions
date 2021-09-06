@@ -172,5 +172,6 @@ The problem to solve was, how would you read the file and write the solution to 
 15) What is a load balancer? 
 16) How many types of load balancers are there?
 17) Which types of load balancers did you use?
+18) In the project architechture, where is the load balancer placed actually?
 
 
