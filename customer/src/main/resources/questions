@@ -142,3 +142,31 @@ Others
 public List<String> findClosestAddresses(File addresses, String hotelAddres) {}; 
 The problem to solve was, how would you read the file and write the solution to find closest addresses to the given address. No API's given nothing, you basically can use whatever you want, I believe they want to see how you approach this problem. Again depends on which approach you choose and you and interviewer will decide on the file structure and how to extract the distance. Once you agree on this you start implementing the business logic for returning the List<String> of closest addresses 
 
+
+## Ericsson interview questions
+
+1) What is your techinology stack, current role ?
+2) What is the architechture of your project?
+3) If your application/microservice is working with an external system, and that system takes a lot of time to come back. How do you fix this? 
+   ( Let's say the external system is another microservice, or another API or a DB call. Or a JMS call )
+4) If there is a database query, or procedure, that is taking too long time, how will you fix it?
+5) Did you work with any JMS? 
+6) What JMSs you have worked with?
+7) What is a Topic in JMS?
+8) What is a Queue in JMS?
+9) Can you give real life example of topic and queue?
+10) If I want to tell my JMS that if the message is not processed, then rollback the whole activity, what is the way to do that? --> Answer : use acknowledgement mode.
+11) What is message persistence in JMS?
+12) How does message persistence work in JMS? When the consumer is dmamaged, and there are lot of messages in the persistence, what will happen to the messages? How will
+    you handle this kind of problme and scenario?
+13) Scenario based problem : Let's say you have to process 500 transactions per second. The transactions will come and they have to be processesed to 5 downstream applications
+    like east bound, north bound, south bound, west bound. Now how will you design your application?
+14) In the above scenario, as an architect of the project, 
+    a) what technology will you use?
+    b) what hardware and architechture will you use?
+    c) what will be your chosen team size? Who will be in the team?
+    d) How much time will you need to complete this activity, with the team?
+    e) How will you handle the costing of the project?
+    
+
+
