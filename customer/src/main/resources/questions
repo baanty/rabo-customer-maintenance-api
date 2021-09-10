@@ -176,5 +176,10 @@ The problem to solve was, how would you read the file and write the solution to 
 19) When programming for JMS ( Like ActiveMQ or JbossMq ) what are the main components to be taken care in program? 
      --> Answer : Queue, Topic, publisher, QueueConnection, TopicConnection, QueueConnectionFactory, 
      TopicConnectionFactory and ultimately the JNDI registry, that will be used for registration.
+     
+20) When working with JbossMQ, what is the main configuration file? What is the main configuration file for Websphere MQ? What is the main configuration file for apache
+    Kafka?
+    
+    
 
 
