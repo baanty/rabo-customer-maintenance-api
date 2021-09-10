@@ -177,7 +177,10 @@ The problem to solve was, how would you read the file and write the solution to 
      --> Answer : Queue, Topic, publisher, QueueConnection, TopicConnection, QueueConnectionFactory, 
      TopicConnectionFactory and ultimately the JNDI registry, that will be used for registration.
      
-20) When working with JbossMQ, what is the main configuration file? What is the main configuration file for Websphere MQ? What is the main configuration file for apache
+20) How is distributed session management done in microservice? Any tool/software that you have used to do distributed session management?
+    --> Answer : Use Redis or Hazelcast. Redis is more used. Do some reading on Redis.
+     
+21) When working with JbossMQ, what is the main configuration file? What is the main configuration file for Websphere MQ? What is the main configuration file for apache
     Kafka?
     
     
