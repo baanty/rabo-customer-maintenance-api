@@ -185,4 +185,21 @@ The problem to solve was, how would you read the file and write the solution to 
     
     
 
+$$ Accenture third round interview.
+====================================================
 
+1) What is classloader? How many types of classloader are there?
+2) What are the disadvantages of hibernate?
+3) What is Spring? Which different modules of Spring did you use?
+4) which different design patterns did you use?
+5) Did you use cloud? Which one?
+6) Did you use EJB?
+7) What is a container?
+8) Did you use creational design patterns? 
+9) What is a factory design pattern?
+10)What are other design patters?
+11)Did you use Security? What kind of security did you use?
+12)What is token based authentication and what is certificate based authentication?
+13)What are the differences between token based authentication and certificate based authentication?
+14)Did you use any database? What databases did you use?
+15)Did you write procedure, complex query, function, trigger?
