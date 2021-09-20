@@ -204,3 +204,18 @@ $$ Accenture third round interview.
 14)Did you use any database? What databases did you use?
 15)Did you write procedure, complex query, function, trigger?
 16)What is a digital signature?
+17)What are the differences betweeb SOAP protocol and REST protocol? Why use them? 
+18)In whihc scenarios to use SOAP and in which scenarios to use REST?
+19)Authentication in SOAP and REST. Please explain.
+20)What are the real life example of different design patterns? 
+21)Real life scenario problem
+-----------------------------
+     Let's say in a planet there are two typoes of humans. 
+         a) Super Humans
+         b) Normal humans
+      Normal human can eat, sleep, walk, run etc. Super human can do all the things of normal human + additional activites like fly, long long jump etc. 
+      Now, if a normal human does good to other humans, then he is promotoed to super human. But if super human does wrong things, he is demoted to normal human beings.
+      
+      How will you design the solution ot the above problem? What technology componenets will you use and what will be the solution?
+      
+      
