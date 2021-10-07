@@ -219,3 +219,44 @@ $$ Accenture third round interview.
       How will you design the solution ot the above problem? What technology componenets will you use and what will be the solution?
       
       
+$$ Capgemini UK interview
+--------------------------------
+1) What do you understand by multiple inheritance?
+2) WHat is an interface default method?
+3) Hands on programming challenge. Multiple implementaions and test those.
+4) If two interfaces have the same default methods, with the same method signature, and you have one class that implements both the interfaces.
+   Then which method will be executed by the class?
+5) Will the above give any compilation error/problem? If yes, how will you resolve that problem?
+6) How is multiple inheritance supported by java?
+7) Which java 8 features did you use?
+8) What is stream?
+9) How will you filter a list of employees, who have salary greater then 10,000 pounds?
+10) What is a map operation in Java 8 ? What are the differences between mapping and filtering in Java 8?
+11) Did you use multithreading? How did you do multithreading?
+12) If I want to create 10 different threads, then how will you do that?
+13) Did you use executor service?
+14) What is singleton pattern? How is it implemented in the java classes?
+15) Like Singleton, instead of one, if I want to make only two instances of my class then how will I do it?
+16) What other design patters did you use?
+
+Spring
+-------
+17) What design patterns are used in Spring?
+18) What are the main componenets of Spring?
+19) In Spring rest, how did you do authentication?
+20) What are the different HTTP methods? 
+21) What are difference between PUT and PATCH?
+22) What are the diferrences between PUT, POST and PATCH?
+23) In authentication, what is token based authentication?
+24) In a JWT token, how many parts are there? --> Ans : header, payload, signature.
+
+Security
+----------
+25) Did you implement security in your software? What kind of security did you do?
+26) What is the difference between certificate based, token based, and basic authentication?
+27) What are the differences between symmetric key and asymetric key?
+28) When there is certificate related problem in your application, how do you troubleshoot the
+    problem?
+    
+ 29) which clouds did you use?
+ 30) Which services of cloud?
