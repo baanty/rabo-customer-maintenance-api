@@ -338,7 +338,14 @@ Core Java
  21) Are the topics instance level, or cluster level? 
  22) Are the partitions instance level, or cluster level?
          
-
+ AWS
+ --------------------------
+ 23) Which services of AWS did you use?
+ 24) How many kinds of storages are there in S3? Which stoarges did youuse?
+ 25) How does S3 store the data ( As SQL or Documents, or how ) ?
+ 26) In order to identofy the stored document, what kind of identifier did you use? 
+ 27) How did you store the above identifiers in the system?
+ 
 
 
 
