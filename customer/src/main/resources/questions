@@ -326,6 +326,15 @@ Core Java
  HIbernate
  -------------------
  16) Hibernate does a query. If the same query is fired again, will hibernate go to the DB, or what will it do?
+ 
+ Kafka
+ --------------
+ 17) What are partitions in Kafka?
+ 18) What are topics in Kafka?
+ 19) If a topic is partitioned, then how will the messages be delivered to the partitions? Will the message go to every partition of the topic?
+ 20) How are the subscribers arranged to Kafka? All the subscribers listen to the same partition, or not?
+ 21) Are the topics instance level, or cluster level? 
+ 22) Are the partitions instance level, or cluster level?
          
 
 
