@@ -260,3 +260,76 @@ Security
     
  29) which clouds did you use?
  30) Which services of cloud?
+
+
+####  JP morgan Chase - UK - Software Engineer - Fullstack
+======================================================================================
+Core Java
+--------
+
+1) Did you work with Java 8? What are the features of Java 8?
+2) Hands on exercise - 
+          You are given two arryas of intgers. { 1, 2, 5, 4, 3 } and {3, 4, 6, 7} ; You have get a single List/Array back, which has all the 
+          unique elemensts of the above array. The result should be sorted. You can not use Set interface. Write the program to do it.
+          
+3) A sample small program was given. The program method is given below.
+    ------------------------------------------------------------------------
+     public int function( int x ) {
+       if ( x == 0 ) {
+        return 1;
+       }
+       return ( x * ( x - 1 ) ) ;
+      }
+   ------------------------------------------------------------------------
+     a) What does the program do? Ans : It is a factorial calculator.
+     b) What are the bugs in the program? Ans : Does not check for null and negetive input
+     c) How will you fix the bugs? Ans : Put a null check and a negetive check before the recursive method call.
+     d) If the bugs are not fixed, then what error/exception will be the outcome? Ans : A Stack Overflow error.
+     
+ 
+  Spring/Spring Boot
+  -------------------
+  4) What are the different Spring bean scopes?
+  5) What will happen if I put a prototype scope bean inside a singleton scope bean?
+  6) Let us say that you have two beans. One is the School bean and the other one is the Student bean. The student bean is prototype scope and the student bean is
+     Default ( singleton ) scoped.
+        a) Which bean will be loaded first? Why?
+        b) Each time there is a request, the prototype will be instantiated. But what will happen to the mother bean? Will it be instantiated 
+           every time, or the same instance will ge used? 
+        c) Let's say the School bean has getters and setters for the Student bean. Now if we call getStudent, what object will it return? Will it return
+           a new object evrytime or will it return the same student object? How will the instantiation work here?
+           
+   7) In Sevrlet/JSP, what is the file that we used for web context configuration? Ans : web.xml
+   
+   
+   Design Patterns
+   ----------------
+   
+  8) Let's say I have an employee and the designation of the empoyee is a property. The designation of the employee can change over time to time.
+     The designation can be contractor/Full-Time/Manager/Architect. But the role can change.
+         a) How will you do the design of the objects?
+         b) Which design patterns will you use to solve this problem?
+         c) Which classes will be concrete and which will be abstract/interface? And why?
+            Justify your design.
+            
+ 9) What are the differences between state pattern and strategy pattern?
+ 10) Which patterns will you use in this case?
+ 
+ Spring Security
+ ------------------
+ 11) Did you work with authentication, authorization? What is the difference between them?
+ 12) Did you work with OAuth authentication mechanism?
+ 13) How did you implement security check in Spring Rest Side? Ans : Spring Security module. 
+ 14) Did you use token based authentication?
+ 15) How can you parse the token in the back end and validate it?
+ 
+ HIbernate
+ -------------------
+ 16) Hibernate does a query. If the same query is fired again, will hibernate go to the DB, or what will it do?
+         
+
+
+
+
+
+
