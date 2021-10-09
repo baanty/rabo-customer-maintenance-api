@@ -1,3 +1,9 @@
+================================================================================================
+#
+#       Morgan Stanley Interview Questions                                     
+#
+================================================================================================
+
 1.	Explain about BigDecimal and how is it different from 'double' with the use cases about where to use it. 
 2.	Pass By Value / Pass By Reference in Java?
 3.	When should we use a LinkedList vs ArrayList?
@@ -142,8 +148,24 @@ Others
 public List<String> findClosestAddresses(File addresses, String hotelAddres) {}; 
 The problem to solve was, how would you read the file and write the solution to find closest addresses to the given address. No API's given nothing, you basically can use whatever you want, I believe they want to see how you approach this problem. Again depends on which approach you choose and you and interviewer will decide on the file structure and how to extract the distance. Once you agree on this you start implementing the business logic for returning the List<String> of closest addresses 
 
+====================================================================
+Ericsson Syllabus
+====================================================================
+Telecom basic, 5G, cloud native and cloud ready
+DevOps
+Pipeline
+Threading
+Performance tuning
+Code security
+=====================================================================
 
-## Ericsson interview questions
+================================================================================================
+#
+#      ## Ericsson interview questions                                
+#
+================================================================================================
+
+
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 1) What is your techinology stack, current role ?
@@ -184,8 +206,15 @@ The problem to solve was, how would you read the file and write the solution to 
     Kafka?
     
     
+    
+================================================================================================
+#
+#    $$ Accenture third round interview.                               
+#
+================================================================================================
+    
 
-$$ Accenture third round interview.
+
 ====================================================
 
 1) What is classloader? How many types of classloader are there?
@@ -262,7 +291,14 @@ Security
  30) Which services of cloud?
 
 
-####  JP morgan Chase - UK - Software Engineer - Fullstack
+================================================================================================
+#
+#    
+####  JP morgan Chase - UK - Software Engineer - Fullstack                      
+#
+================================================================================================
+    
+
 ======================================================================================
 Core Java
 --------
