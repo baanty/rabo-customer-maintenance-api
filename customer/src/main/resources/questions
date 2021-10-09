@@ -337,6 +337,12 @@ Core Java
         c) Let's say the School bean has getters and setters for the Student bean. Now if we call getStudent, what object will it return? Will it return
            a new object evrytime or will it return the same student object? How will the instantiation work here?
            
+         d) How will you ensure that e prototype is created every time a method of the nested prototype is called by the mother sinlgeton bean?
+         
+          Answer  :
+          -------------
+          @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE, #proxyMode = ScopedProxyMode.TARGET_CLASS#)
+           
    7) In Sevrlet/JSP, what is the file that we used for web context configuration? Ans : web.xml
    
    
