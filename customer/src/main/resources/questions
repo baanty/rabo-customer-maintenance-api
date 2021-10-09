@@ -341,7 +341,8 @@ Core Java
          
           Answer  :
           -------------
-          @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE, #proxyMode = ScopedProxyMode.TARGET_CLASS#)
+          @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE, proxyMode = ScopedProxyMode.TARGET_CLASS )
+          Explanation : The proxyMode = ScopedProxyMde.TARGET_CLASS will be used to trigger methods, importantly from a new instance of the PROTOTYPE scoped bean.
            
    7) In Sevrlet/JSP, what is the file that we used for web context configuration? Ans : web.xml
    
