@@ -391,6 +391,19 @@ Core Java
  
 
 
+=======================================================================================
+#
+#  Ericsson Second Round Interview
+#
+======================================================================================
+
+Core Java
+-------------------------
+
+1) What Exception will you get when you divide an int with zero? 
+   Answer : Arithmatic**OperationException
+   
+2) What exception will you get if you divide a long or float by zero? Why difference?
 
 
 
