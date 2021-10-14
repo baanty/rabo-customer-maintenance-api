@@ -397,13 +397,42 @@ Core Java
 #
 ======================================================================================
 
-Core Java
--------------------------
-
 1) What Exception will you get when you divide an int with zero? 
    Answer : Arithmatic**OperationException
    
 2) What exception will you get if you divide a long or float by zero? Why difference?
+3) How are the incoming requests mapped to the servlets? 
+4) When there is an incoming request, how does it come to the RestFul controller?
+5) When hibernate fires the same query for the second time, does ot go to the DB or it hits the cache and gives back the result?
+
+
+
+
+===================================================================================================================
+#
+#  NatWest UK Position - First Round of interview
+#
+====================================================================================================================
+1) What do you understand by real time processing of data?
+2) In RestFul service, say one service is called first. Then in parallel other services are called. How will you deal with this design problem?
+3) Current Project, generic questions
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
