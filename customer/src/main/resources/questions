@@ -430,7 +430,9 @@ Core Java
 3) Did you work with any other NoSql database?
 4) Did you work with Couchbase?
 5) If you have to increase overall throughput of your application, how will you do it?
-6) 
+6) Did you use Apache Camel? 
+7) How did you use Camel? What are main drawbacks or disadvantages of Camel, when compared to other frameworks?
+8) Did you write Camel configuration with DSL? How did you do it?
 
 
 
