@@ -6,6 +6,8 @@
 
 1.	Explain about BigDecimal and how is it different from 'double' with the use cases about where to use it. 
 2.	Pass By Value / Pass By Reference in Java?
+   Answer : https://stackoverflow.com/questions/40480/is-java-pass-by-reference-or-pass-by-value
+   
 3.	When should we use a LinkedList vs ArrayList?
 4.	What is the time complexity of an ArrayList and LinkedList?
 5.	What is the time complexity of addition of an item to an Arraylist, Hashmap and LinkedList?
