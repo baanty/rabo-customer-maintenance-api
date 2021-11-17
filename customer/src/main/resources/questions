@@ -438,6 +438,38 @@ Core Java
 
 
 
+=================================================================================================================
+#
+# ThoughtWorks - Code Pairing Round
+#
+==================================================================================================================
+
+1) An already existing codebase was given. The codebase was given before two days from interview. In the interview I was asked to pick a task from 
+Sprint board and do code modification on it.
+
+ThoughtWorks - Technical Interview
+---------------------------------------------------------------
+1) Started with - In recent time, what piece of work did you enjoy the most
+   Answer : The migration of API from MD2 to private cloud.
+2) How did you do? What are the points that you will improve if you have to do that again?
+3) How did you implement the PKI certificate based authentication of the API?
+4) How did you improve the build/deploy pipeline ( Jenkins ) to adapt to the private cloud environment?
+5) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
