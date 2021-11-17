@@ -456,6 +456,7 @@ ThoughtWorks - Technical Interview
 4) How did you improve the build/deploy pipeline ( Jenkins ) to adapt to the private cloud environment?
 5) Apart from Java/Microservice stack, did you work in any other language ( like python, scala, groovy, kotlin ) stack? 
    If not, why? Would you like to work in any other stack? Why?
+6) What changes were done to deployment mechanism when moved to private cloud from on-premises infrastructure?
 
 
 
