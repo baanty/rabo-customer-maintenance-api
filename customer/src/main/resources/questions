@@ -454,7 +454,8 @@ ThoughtWorks - Technical Interview
 2) How did you do? What are the points that you will improve if you have to do that again?
 3) How did you implement the PKI certificate based authentication of the API?
 4) How did you improve the build/deploy pipeline ( Jenkins ) to adapt to the private cloud environment?
-5) 
+5) Apart from Java/Microservice stack, did you work in any other language ( like python, scala, groovy, kotlin ) stack? 
+   If not, why? Would you like to work in any other stack? Why?
 
 
 
