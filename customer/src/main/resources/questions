@@ -461,7 +461,99 @@ ThoughtWorks - Technical Interview
 
 
 
+============================================================================================================================================================
 
+CTS Off shore Questions
+
+============================================================================================================================================================
+
+Explain Functional  interface, Default method, method reference?
+
+How to overload and override main method in Java?
+
+Yes, We can overload the main method in java but JVM only calls the original main method, it will never call our overloaded main method.
+
+What will be the end result of .filter() operation in stream API?
+
+The filter method essentially selects elements based on a condition you provide. That's why the filter (Predicate condition) accepts a Predicate object, which provides a function that is applied to a condition. If the condition evaluates true, the object is selected. Otherwise, it will be ignored.
+
+What is Predicate in java 8?
+In Java 8, Predicate is a functional interface, which accepts an argument and returns a boolean. Usually, it used to apply in a filter for a collection of objects.
+
+Different between finally and finalize?
+
+Explain Optional of() method in Java with examples?
+
+The of() method of java.util.Optional class in Java is used to get an instance of this Optional class with the specified value of the specified type.
+// create a Optional
+ Optional<Integer> op = Optional.of(9455);
+// print valuel
+System.out.println("Optional: " + op);
+Output: Optional: Optional[9455]
+
+What happens when we declare a thread inside main method in java, what are the active threads are there in the program?
+
+
+
+
+Explain @SpringbootApplication annotation?
+
+Advantage and disadvantage of resttemplate and feignclient?
+
+
+Using Feign-clients over rest-templates has number of advantages. I will list down those below.
+
+• The developer need not worry about the implementation. Just to create abstract Feign interface and few annotations - declarative principle. (If you want customized configuration, then it will hold some code)
+
+• With Spring Cloud Eureka, Ribbon client-side load-balancer will be equipped with Feign client.
+
+• No need to worry about the unit test, because there is no implementation from you to test. (Arguable)
+
+• Supports Feign annotations and JAX-RS annotations.
+
+• Highly compatible and easily configurable with Spring Cloud (Specially with Eureka server registry)
+
+• Allows Feign client configuration via @Configuration class or application properties.
+
+• Allows us to add interceptors. (Add interceptors via @Configuration or application properties. Alternatively can use Spring Cloud provided interceptors as well. Example - BasicAuthRequestInterceptor)
+
+• Hystrix support for fall-back mechanism.
+
+• Logging
+
+• Error handling
+
+Feign is a good choice, If you are fascinated with JPA and the way how it resolves your queries, then Feign is the tool for you. Feign will handle your server requests perfectly fine.
+
+RestTemplate is used for making the synchronous call. When using RestTemplate, the URL parameter is constructed programmatically, and data is sent across to the other service. In more complex scenarios, we will have to get to the details of the HTTP APIs provided by RestTemplate or even to APIs at a much lower level.
+
+Feign is a Spring Cloud Netflix library for providing a higher level of abstraction over REST-based service calls. Spring Cloud Feign works on a declarative principle. When using Feign, we write declarative REST service interfaces at the client, and use those interfaces to program the client. The developer need not worry about the implementation ...
+
+
+Explain springboot Actuator?
+
+How to Changing the Logging Level at the Runtime for a Spring Boot Application?
+
+We're going to start by using the /loggers Actuator endpoint to display and change our logging level. The /loggers endpoint is available at actuator/loggers and we can access a specific logger by appending its name as part of the path.
+
+For example, we can access the root logger with the URL http://localhost:8080/actuator/loggers/root.
+
+To change the logging level, we can issue a POST request to the /loggers endpoint:
+
+curl -i -X POST -H 'Content-Type: application/json' -d '{"configuredLevel": "TRACE"}' http://localhost:8080/actuator/loggers/com.baeldung.spring.boot.management.logging HTTP/1.1 204 Date: Mon, 02 Sep 2019 13:56:52 GMT
+
+Can we use .yml and .properties  both in single springboot  application?
+
+Yes You can use both at same time in same project.
+
+When you use both YML and properties at same time, say for example
+application.yml and application.properties at same time in same
+project, first application.yml will be loaded later
+application.properties will be loaded.
+
+Important point to be noted is that if application.yml and application.properties have same keys for example in application.yml has spring.app.name = testYML and application.properties has spring.app.name = testProperties at same time in same project, then application.yml value will be overwritten by application.properties value since it is loading at last.
+
+And the value in spring.app.name = testProperties.
 
 
 
