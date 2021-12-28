@@ -560,14 +560,35 @@ And the value in spring.app.name = testProperties.
 
 
 
+=============================================
+Ericsson - Kolkata - First Round
+============================================
+
+
+1) What is the new change brought in terms of memory in java 8?
+
+Simply put, Metaspace is a new memory space – starting from the Java 8 version; it has replaced the older PermGen memory space. The most significant difference is how it handles memory allocation.
+Specifically, this native memory region grows automatically by default.We also have new flags to tune the memory:
+
+MetaspaceSize and MaxMetaspaceSize – we can set the Metaspace upper bounds.
+MinMetaspaceFreeRatio – is the minimum percentage of class metadata capacity free after garbage collection
+MaxMetaspaceFreeRatio – is the maximum percentage of class metadata capacity free after a garbage collection to avoid a reduction in the amount of space
+Additionally, the garbage collection process also gains some benefits from this change. The garbage collector now automatically triggers the cleaning of the dead classes once the class metadata usage reaches its maximum metaspace size.
+
+Therefore, with this improvement, JVM reduces the chance to get the OutOfMemory error.
+
+2)What is the adapter design pattern and write an example.
+3)Explain the singleton pattern and write the code.
+4)Explain Double-Checked Locking with Singleton?
+5)Problem- solution > suppose there is a cache of elements which can hold only 10 elements at a time
+and after 10 sec cache needs to be cleared by 1 element and before insertion of each element the waiting time will be 10 sec- how to solve.
+
+Use two threads , one will wait for 10 seconds after inserting an element and other will wait for 10 seconds before removing it from cache.
 
 
 
 
-
-
-
-
+6) https://www.geeksforgeeks.org/producer-consumer-solution-using-threads-java/
 
 
 
