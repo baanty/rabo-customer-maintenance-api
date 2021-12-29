@@ -593,5 +593,21 @@ Use two threads , one will wait for 10 seconds after inserting an element and ot
 
 
 
+================================================
+Ericsson - Second Round - Kolkata
+=====================================================
 
-
+1) How Hashmap works internally?
+2) Difference between concurrentMap and SynchronizedMap?
+3) What is the default size of hashmap?(default size=16)
+4) What is the default size of ArrayList and how it gets incremented?(default size=10
+5) What is load factor in Arraylist?
+6) What is CopyOnArrayList?
+7) How to reverse and store a string without using the string reverse method?
+8) What is consumer producer problem in thread and how to solve it?
+9) What is the interface that lamda function use internally?
+10) Suppose the is an arraylist of string object and we invoke stream operation on them. What are the limitations on them?
+11) What is the difference between map and flatmap?
+12) What is the difference between stream and parallel stream?
+13) How to disable sipringboot autoconfiguration?
+14) What is an actuator in springboot?
