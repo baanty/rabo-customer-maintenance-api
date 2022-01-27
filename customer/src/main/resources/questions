@@ -611,3 +611,195 @@ Ericsson - Second Round - Kolkata
 12) What is the difference between stream and parallel stream?
 13) How to disable sipringboot autoconfiguration?
 14) What is an actuator in springboot?
+
+
+hexaview
+-----------------
+1)Write a code for printing number of charecter occourence of given string?
+https://www.geeksforgeeks.org/java-program-to-count-the-occurrence-of-each-character-in-a-string-using-hashmap/
+2)Write code to sum up values of an integer array with stream api?
+3)What are the J2ee design patterns you know?
+4)What is filter pattern?
+5)How HashMap works internally?
+6)What is lambda function?
+7)What is stream API?
+8)Have you worked on any MQ ?
+9) Write a programm to count occourence of a charecter in a String?
+
+
+Virtusa
+--------------------------------
+0) Tell me about your current project architecture?
+1) Why to chose microservice in your current project?
+2) How we can achive asynchronus messing in microservice architecture?
+3) What is docker image and what role it playes in container technology?
+4) How we can achive security in REST api?
+5) How security is implemented in your current project?
+6) In terms of memory what is the changes brought in java 8?
+Simply put, Metaspace is a new memory space – starting from the Java 8 version; it has replaced the older PermGen memory space. The most significant difference is how it handles memory allocation.
+Specifically, this native memory region grows automatically by default.
+We also have new flags to tune the memory:
+MetaspaceSize and MaxMetaspaceSize – we can set the Metaspace upper bounds.
+MinMetaspaceFreeRatio – is the minimum percentage of class metadata capacity free after garbage collection
+MaxMetaspaceFreeRatio – is the maximum percentage of class metadata capacity free after a garbage collection to avoid a reduction in the amount of space
+Additionally, the garbage collection process also gains some benefits from this change. The garbage collector now automatically triggers the cleaning of the dead classes once the class metadata usage reaches its maximum metaspace size.
+Therefore, with this improvement, JVM reduces the chance to get the OutOfMemory error.
+
+7) What other new features of java 8 have you used?
+8) Explain Thread Executor service for achiving asynchronusprocessing?
+9) What is ScheduledExecutorService?
+10) Can you write a program with ScheduledExecutorService?
+https://www.baeldung.com/java-executor-service-tutorial
+10) Write a program to print the sum of consicutive sum of character values in a given string ? e.g. string= ABCDEEEFG , A=1,B=2,C=3,D=4,E=5 , then output=ABCD20FG
+11) Tell me about some of the flaws/vernarebilities of veracode scan?
+12) What about recent log4j vernarebiliti? ( exposing JNDI in log which can be accessed and manipulated by suspicious attacker)
+13) What is apigate way in microservice?
+14) What is hibernate first and sceond level cache?
+
+
+LabVantage
+------------------------------------------------
+1)Can we override private and static methods? NO
+
+2)We have overloaded functions and we are passing null.
+Which function will be called and what will be the output of the program?
+
+public class Test {
+public static void main(String[] args) {
+foo(null);
+}
+public static void foo(Object o) {
+System.out.println("Object argument");
+}
+public static void foo(String s) {
+System.out.println("String argument");
+}
+}
+
+Ans: According to Java specs, in case of overloading, the compiler picks the most specific function.
+Obviously String class is more specific than Object class, hence it will print “String argument”.
+
+3)Please sort an array in decending order : int[] myArray = {8,5,2,9,6};
+
+Ans:
+private static void sortArray() {
+// declaring and initializing the array
+int[] arr = new int[] {8,5,2,9,6};
+
+int temp = 0;
+
+// traverse 0 to array length
+for (int i = 0; i < arr.length - 1; i++) {
+
+// traverse i+1 to array length
+for (int j = i + 1; j < arr.length; j++) {
+
+// compare array element with
+// all next element
+if (arr[i] < arr[j]) {
+
+temp = arr[i];
+arr[i] = arr[j];
+arr[j] = temp;
+}
+}
+}
+// print all element of array
+for (int value : arr) {
+System.out.println(value + " ");
+}
+}
+
+4)How to get distinct characters and their count in a String?
+Input = "abcdABCDabcd";
+Output =  {a=2, A=1, b=2, B=1, c=2, C=1, d=2, D=1}
+
+Ans: with stream - string.chars().distinct().count();
+
+private static void checkOccourenceOfCharaterInString() {
+String s = "abcdABCDabcd";
+Set<Character> set = new HashSet<Character>();
+for (int i = 0; i < s.length(); ++i){
+char ch = s.charAt(i);
+if ((ch >= 65 && ch <= 90) || (ch >= 97 && ch <= 122))
+set.add(s.charAt(i));
+}
+System.out.println(set.size());
+}
+
+5)Java program to check if the given number is Prime?
+
+Ans:
+private static boolean isPrime(int n)
+{
+// Corner case
+if (n <= 1)
+return false;
+
+// Check from 2 to n-1
+for (int i = 2; i < n; i++)
+if (n % i == 0)
+return false;
+else
+return true;
+
+return true;
+}
+
+Ans: A prime is a natural number greater than 1 that has no positive divisors other than 1 and itself.
+Examples of first few prime numbers are {2, 3, 5,
+% = Modulus operator , devides two numbers and returns the operator
+
+6)Java Program to check if a vowel is present in the string?
+
+String str = "GeeksForGeeks";
+str = str.toLowerCase();
+
+// toCharArray() is used to convert
+// string to char array
+char[] chars = str.toCharArray();
+
+int count = 0;
+
+for (int i = 0; i < str.length(); i++) {
+// check if char[i] is vowel
+if (str.charAt(i) == 'a' || str.charAt(i) == 'e' || str.charAt(i) == 'i' || str.charAt(i) == 'o'
+|| str.charAt(i) == 'u') {
+// count increments if there is vowel in
+// char[i]
+count++;
+}
+}
+
+// display total count of vowels in string
+System.out.println("Total no of vowels in string are: " + count);
+
+7)What will be the output of the program?
+String x = "abc";
+String y = "abc";
+x.concat(y);
+System.out.print(x.concat(y));
+
+
+8)EMP table
+empid empname deptid salary
+E1  Saibal  D1     1000000
+E2    Bimal   D1     1200000
+E3    Pradeep D1     3000000
+E4    Tapas   D2     4500000
+E5    Kamal   D2     90000000
+
+Find the number of employees in each department along with the department code. Below is the required output
+Deptid Number of employees
+D1     3
+D2     2
+
+
+SELECT deptid, COUNT(*) FROM EMP GROUP BY deptid;
+
+9) What is singleton design pattern ?Write a singleton class?
+
+10)Write a program to conver list to set?
+Ans:
+HashSet constructor can take another collection object to construct a new set containing the elements of the specied list.
+Using stream - list.stream().collect(Collectors.toSet());
