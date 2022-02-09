@@ -803,3 +803,16 @@ SELECT deptid, COUNT(*) FROM EMP GROUP BY deptid;
 Ans:
 HashSet constructor can take another collection object to construct a new set containing the elements of the specied list.
 Using stream - list.stream().collect(Collectors.toSet());
+
+
+================================================================================================
+Cerner Kolkata - First Round
+================================================================================================
+
+1) There are two components of an enterprise application. One is in cloud and the other one is in-house. How to integrate those in a new microservice architechture?
+2) What is a distributed tracing in microservice? How to use it? 
+            -- Answer : AppDynamics, Sleuth etc.
+3) What is a distributed logging? Which tools are used to do distruibuted logging in microservice?
+
+
+
