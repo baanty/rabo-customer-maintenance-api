@@ -32,6 +32,15 @@
 24.	How does Garbage Collection work? 
 25.	Features of Java 9,10, 11 
 26.	How to make a class immutable?
+
+
+
+============================================================
+
+MindTree Interview
+
+============================================================
+1) 
 27.	Memory Management in Java - What does a Memory leak happen in Java? Will this cause memory leak - public static List<Double> list = new ArrayList<>(); ?
 28.	What does the static keyword mean?
 29.	How are Static Blocks initialized in Java? 
@@ -813,6 +822,16 @@ Cerner Kolkata - First Round
 2) What is a distributed tracing in microservice? How to use it? 
             -- Answer : AppDynamics, Sleuth etc.
 3) What is a distributed logging? Which tools are used to do distruibuted logging in microservice?
+
+
+
+==================
+MindTree Kolkata
+=================
+1) What is Element Collection in Hibernate?
+2) How to make thread safe spring Bean?
+3) What is inheritance strategy and table mapping in hibernate?
+4) How will you designt the microservice?
 
 
 
