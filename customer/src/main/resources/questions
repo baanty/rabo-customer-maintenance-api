@@ -860,3 +860,21 @@ Capgemini - Kolkata - Architect
 11) What capabilities does API Gateway give us?
 
 
+=====================================================================================
+
+Tech. Mahindra interview
+
+--------------------------------------------------------------------------------------------------
+
+1) Difference between stream parallel processing and Normal Java Thread.
+2) What is the purpose of API Gateway.
+3) WHat is thread pool and how to use it?
+4) What is SPring AOP?
+5) How Does AOP WOrk?
+6) Did I use any executor service?
+7) Do you think normal java thread are faster or stream paralle APIs are faster?
+8) What will happen if I use @Repository instead of @Service in Spring bean?
+9) What will happen if I use @Service instead of @Controller?
+10) What do you understand by pointcut?
+
+-----------------------------------------------------------------------------------------------------------
