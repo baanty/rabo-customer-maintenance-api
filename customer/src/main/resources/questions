@@ -1,0 +1,888 @@
+================================================================================================
+#
+#       Morgan Stanley Interview Questions                                     
+#
+================================================================================================
+
+1.	Explain about BigDecimal and how is it different from 'double' with the use cases about where to use it. 
+2.	Pass By Value / Pass By Reference in Java?
+   Answer : https://stackoverflow.com/questions/40480/is-java-pass-by-reference-or-pass-by-value
+   
+3.	When should we use a LinkedList vs ArrayList?
+4.	What is the time complexity of an ArrayList and LinkedList?
+5.	What is the time complexity of addition of an item to an Arraylist, Hashmap and LinkedList?
+6.	What is the time complexity - if we add an element at beginning of an ArrayList? Also In case of LinkedList? 
+7.	What is time complexity - O(n) to find the length of Linked List? 
+8.	How is HashSet implemented – Internal working?
+9.	How HashMap is implemented – Internal working?
+10.	 How does Get and Put work in an HasMap?
+11.	I have a hash map, how do I sort it based on values? e.g. I have a hash map, of employee => DOB, how to find out people who were born in March. 
+12.	What is the purpose of the hashCode() method? When would you need to override it?
+13.	What is the relationship between hashCode() and equals()?
+14.	What is a hash collision?
+15.	How to avoid a hash collision?
+16.	When to use a HashMap vs ConcurrentHashMap? 
+17.	 What is the difference between using a HashMap in a synchronized block vs ConcurrentHashMap?
+18.	What is meant by fail safe and fail fast iterators ?
+19.	Will Adding or Removing elements from a non-concurrent collection cause an Exception? If yes, what Exception.
+20.	How does insertion into a TreeMap work?
+21.	What is the structure of JVM? What are the different components within the architecture? (garbage collection, heap, etc, where does variables go, static variables go, etc.)
+22.	What is PermGen space, Heap space
+23.	Types of garbage collectors available in Java.
+24.	How does Garbage Collection work? 
+25.	Features of Java 9,10, 11 
+26.	How to make a class immutable?
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+Lexmark Kolkata - Architect
+--------------------------------------------------------------------------------------------------------------------------------------------------
+
+1) What is the difference between a hibernate session and an HttpSession?
+2) If an API client is already authenticated, then how to retain the authenticated session in server side?
+3) 
+
+
+============================================================
+
+MindTree Interview
+
+============================================================
+1) 
+27.	Memory Management in Java - What does a Memory leak happen in Java? Will this cause memory leak - public static List<Double> list = new ArrayList<>(); ?
+28.	What does the static keyword mean?
+29.	How are Static Blocks initialized in Java? 
+30.	What is the difference between final, finally, finalize?
+31.	What is Big(O) notation ? 
+32.	 
+Concurrency
+1.	Any experience on Multi-threading? What happens if a thread is started again (Illegal thread exception)
+2.	What is the concurrency level (default 16)
+3.	 Happens-Before relationship
+o	https://www.logicbig.com/tutorials/core-java-tutorial/java-multi-threading/happens-before.html
+o	https://docs.oracle.com/javase/tutorial/essential/concurrency/memconsist.html
+4.	Happens-After relationship
+5.	What is volatile – use cases – Why volatile is called volatile?
+o	https://www.baeldung.com/java-volatile
+6.	What is the difference between == and .equals?
+7.	 
+8.	What is the difference between an abstract class and an interface?
+9.	What is the difference between checked and unchecked exceptions and how would you handle them?
+10.	SOLID principles what are they?
+11.	 what's problem in below code
+@PostMapping
+
+public void trades (Trade trade) {
+
+saveToDB(trade);
+
+publishToService(trade);
+
+}
+Hibernate
+1.	Define eager and lazy fetch types and which one to use for one to many relationships 
+2.	Relational DB – expect some basic questions like how indexing works
+Microservices
+________________________________________
+1.	 How does a Microservice differ from SOA?
+2.	How would you create a Springboot project?
+3.	What is an Actuator? What is it used for?
+4.	What is Environment in Spring boot?
+o	https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/core/env/Environment.html
+5.	What is Transactional in Spring – Typical scenario – A method having Transactional annotation – what would happen 2 threads are spawned from it. – How transaction means here in case of threads 
+o	https://dzone.com/articles/how-does-spring-transactional
+6.	How to check the health of spring boot application
+7.	What are the metrics you are concerned about from Actuator?
+Devops
+________________________________________
+1.	CI CD pipeline – How will I implement – what is the thought process?
+o	https://dzone.com/articles/learn-how-to-setup-a-cicd-pipeline-from-scratch
+2.	What are steps for Jenkins setup from new projects? 
+3.	What are the ways to perform CI/CD?
+4.	How is a Jenkins pipeline built?
+5.	How you deploy in prod - Git , CI / CD pipeline 
+6.	 
+Cloud
+________________________________________
+1.	IaaS vs PaaS vs SaaS
+2.	How is migration to cloud planned
+AWS questions
+________________________________________
+1.	How do we scale up a service on AWS
+2.	How is a Docker image deployed to AWS EC2?
+3.	How are objects in S3 stored and what is the consistency model it follows. 
+4.	How is the health check of an application performed when it is deployed in ECS? How to know if an application is working fine? 
+5.	How does an application load balancer distribute the load across instances? 
+6.	How are different environments managed in AWS?
+Messaging
+________________________________________
+1.	Kafka and Other messaging tools – MAF/Mule – what is the advantage?  
+2.	What will happen in the case of Kafka and other messaging – if a message is sent and retrieved from consumer   
+3.	Kafka related questions, like partitioning, how to guarantee the correct sequence of messages is received by the consumer
+4.	Kafka basics how do you make sure the messages delivered in order
+5.	 Kafka listener
+Containers and Orchestration
+________________________________________
+1.	How to scale up/down in Kubernetes
+2.	How does Kubernetes manage failovers
+3.	How does deployment work in Kubernetes
+4.	What is a service in Kubernetes?
+5.	File  Structure in Docker
+6.	How is a Docker image built?
+7.	What is the first instruction on a Docker file?
+8.	Spring Boot fat jar - ENTRYPOINT
+Code share question bank
+ 
+________________________________________
+Algorithms
+1.	convert a number to literal (e.g. 23 should be converted to twenty-three)
+2.	reverse a number without using strings
+3.	Find Clock Angle
+4.	Find if the string is an anagram
+5.	Find some window moving average
+6.	Rotate matrix by 90 degrees
+7.	Programme to solve the [1, 3, 4, -3, 2] if you start jumping based on the value array element in how many steps, can come out. Negative numbers go back.
+8.	Write a pseudo code for strategy pattern.
+9.	Write a pseudo code for TreeMap implementation.
+10.	Questions on binary tree
+11.	Complexity of treemap implementation.
+12.	Find the next index in Load Balancer which is using Round Robin Technique
+/*RoundRobinLoadBalancer*/
+
+ 
+
+Class Loadbalancer{
+
+ public static int calculateNextIndexPositionToBeAssigned{
+
+/*get the next index in a RoundRobinLoadbalancer to put an instance into*/  
+
+
+
+}
+Fill in gaps programs
+1.	Implement Redis Cache
+2.	Implement load balancer
+Others
+public List<String> findClosestAddresses(File addresses, String hotelAddres) {}; 
+The problem to solve was, how would you read the file and write the solution to find closest addresses to the given address. No API's given nothing, you basically can use whatever you want, I believe they want to see how you approach this problem. Again depends on which approach you choose and you and interviewer will decide on the file structure and how to extract the distance. Once you agree on this you start implementing the business logic for returning the List<String> of closest addresses 
+
+====================================================================
+Ericsson Syllabus
+====================================================================
+Telecom basic, 5G, cloud native and cloud ready
+DevOps
+Pipeline
+Threading
+Performance tuning
+Code security
+=====================================================================
+
+================================================================================================
+#
+#      ## Ericsson interview questions                                
+#
+================================================================================================
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1) What is your techinology stack, current role ?
+2) What is the architechture of your project?
+3) If your application/microservice is working with an external system, and that system takes a lot of time to come back. How do you fix this? 
+   ( Let's say the external system is another microservice, or another API or a DB call. Or a JMS call )
+4) If there is a database query, or procedure, that is taking too long time, how will you fix it?
+5) Did you work with any JMS? 
+6) What JMSs you have worked with?
+7) What is a Topic in JMS?
+8) What is a Queue in JMS?
+9) Can you give real life example of topic and queue?
+10) If I want to tell my JMS that if the message is not processed, then rollback the whole activity, what is the way to do that? --> Answer : use acknowledgement mode.
+11) What is message persistence in JMS?
+12) How does message persistence work in JMS? When the consumer is dmamaged, and there are lot of messages in the persistence, what will happen to the messages? How will
+    you handle this kind of problme and scenario?
+13) Scenario based problem : Let's say you have to process 500 transactions per second. The transactions will come and they have to be processesed to 5 downstream applications
+    like east bound, north bound, south bound, west bound. Now how will you design your application?
+14) In the above scenario, as an architect of the project, 
+    a) what technology will you use?
+    b) what hardware and architechture will you use?
+    c) what will be your chosen team size? Who will be in the team?
+    d) How much time will you need to complete this activity, with the team?
+    e) How will you handle the costing of the project?
+    
+15) What is a load balancer? 
+16) How many types of load balancers are there?
+17) Which types of load balancers did you use?
+18) In the project architechture, where is the load balancer placed actually?
+19) When programming for JMS ( Like ActiveMQ or JbossMq ) what are the main components to be taken care in program? 
+     --> Answer : Queue, Topic, publisher, QueueConnection, TopicConnection, QueueConnectionFactory, 
+     TopicConnectionFactory and ultimately the JNDI registry, that will be used for registration.
+     
+20) How is distributed session management done in microservice? Any tool/software that you have used to do distributed session management?
+    --> Answer : Use Redis or Hazelcast. Redis is more used. Do some reading on Redis.
+     
+21) When working with JbossMQ, what is the main configuration file? What is the main configuration file for Websphere MQ? What is the main configuration file for apache
+    Kafka?
+    
+    
+    
+================================================================================================
+#
+#    $$ Accenture third round interview.                               
+#
+================================================================================================
+    
+
+
+====================================================
+
+1) What is classloader? How many types of classloader are there?
+2) What are the disadvantages of hibernate?
+3) What is Spring? Which different modules of Spring did you use?
+4) which different design patterns did you use?
+5) Did you use cloud? Which one?
+6) Did you use EJB?
+7) What is a container?
+8) Did you use creational design patterns? 
+9) What is a factory design pattern?
+10)What are other design patters?
+11)Did you use Security? What kind of security did you use?
+12)What is token based authentication and what is certificate based authentication?
+13)What are the differences between token based authentication and certificate based authentication?
+14)Did you use any database? What databases did you use?
+15)Did you write procedure, complex query, function, trigger?
+16)What is a digital signature?
+17)What are the differences betweeb SOAP protocol and REST protocol? Why use them? 
+18)In whihc scenarios to use SOAP and in which scenarios to use REST?
+19)Authentication in SOAP and REST. Please explain.
+20)What are the real life example of different design patterns? 
+21)Real life scenario problem
+-----------------------------
+     Let's say in a planet there are two typoes of humans. 
+         a) Super Humans
+         b) Normal humans
+      Normal human can eat, sleep, walk, run etc. Super human can do all the things of normal human + additional activites like fly, long long jump etc. 
+      Now, if a normal human does good to other humans, then he is promotoed to super human. But if super human does wrong things, he is demoted to normal human beings.
+      
+      How will you design the solution ot the above problem? What technology componenets will you use and what will be the solution?
+      
+      
+$$ Capgemini UK interview
+--------------------------------
+1) What do you understand by multiple inheritance?
+2) WHat is an interface default method?
+3) Hands on programming challenge. Multiple implementaions and test those.
+4) If two interfaces have the same default methods, with the same method signature, and you have one class that implements both the interfaces.
+   Then which method will be executed by the class?
+5) Will the above give any compilation error/problem? If yes, how will you resolve that problem?
+6) How is multiple inheritance supported by java?
+7) Which java 8 features did you use?
+8) What is stream?
+9) How will you filter a list of employees, who have salary greater then 10,000 pounds?
+10) What is a map operation in Java 8 ? What are the differences between mapping and filtering in Java 8?
+11) Did you use multithreading? How did you do multithreading?
+12) If I want to create 10 different threads, then how will you do that?
+13) Did you use executor service?
+14) What is singleton pattern? How is it implemented in the java classes?
+15) Like Singleton, instead of one, if I want to make only two instances of my class then how will I do it?
+16) What other design patters did you use?
+
+Spring
+-------
+17) What design patterns are used in Spring?
+18) What are the main componenets of Spring?
+19) In Spring rest, how did you do authentication?
+20) What are the different HTTP methods? 
+21) What are difference between PUT and PATCH?
+22) What are the diferrences between PUT, POST and PATCH?
+23) In authentication, what is token based authentication?
+24) In a JWT token, how many parts are there? --> Ans : header, payload, signature.
+
+Security
+----------
+25) Did you implement security in your software? What kind of security did you do?
+26) What is the difference between certificate based, token based, and basic authentication?
+27) What are the differences between symmetric key and asymetric key?
+28) When there is certificate related problem in your application, how do you troubleshoot the
+    problem?
+    
+ 29) which clouds did you use?
+ 30) Which services of cloud?
+
+
+================================================================================================
+#
+#    
+####  JP morgan Chase - UK - Software Engineer - Fullstack                      
+#
+================================================================================================
+    
+
+======================================================================================
+Core Java
+--------
+
+1) Did you work with Java 8? What are the features of Java 8?
+2) Hands on exercise - 
+          You are given two arryas of intgers. { 1, 2, 5, 4, 3 } and {3, 4, 6, 7} ; You have get a single List/Array back, which has all the 
+          unique elemensts of the above array. The result should be sorted. You can not use Set interface. Write the program to do it.
+          
+3) A sample small program was given. The program method is given below.
+    ------------------------------------------------------------------------
+     
+     public int function( int x ) {
+       if ( x == 0 ) {
+        return 1;
+       }
+       return ( x * function( x - 1 ) ) ;
+      }
+     
+   ------------------------------------------------------------------------
+     a) What does the program do? Ans : It is a factorial calculator.
+     b) What are the bugs in the program? Ans : Does not check for null and negetive input
+     c) How will you fix the bugs? Ans : Put a null check and a negetive check before the recursive method call.
+     d) If the bugs are not fixed, then what error/exception will be the outcome? Ans : A Stack Overflow error.
+     
+ 
+  Spring/Spring Boot
+  -------------------
+  4) What are the different Spring bean scopes?
+  5) What will happen if I put a prototype scope bean inside a singleton scope bean?
+  6) Let us say that you have two beans. One is the School bean and the other one is the Student bean. The student bean is prototype scope and the student bean is
+     Default ( singleton ) scoped.
+        a) Which bean will be loaded first? Why?
+        b) Each time there is a request, the prototype will be instantiated. But what will happen to the mother bean? Will it be instantiated 
+           every time, or the same instance will ge used? 
+        c) Let's say the School bean has getters and setters for the Student bean. Now if we call getStudent, what object will it return? Will it return
+           a new object evrytime or will it return the same student object? How will the instantiation work here?
+           
+         d) How will you ensure that e prototype is created every time a method of the nested prototype is called by the mother sinlgeton bean?
+         
+          Answer  :
+          -------------
+          @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE, proxyMode = ScopedProxyMode.TARGET_CLASS )
+          Explanation : The proxyMode = ScopedProxyMde.TARGET_CLASS will be used to trigger methods, importantly from a new instance of the PROTOTYPE scoped bean.
+           
+   7) In Sevrlet/JSP, what is the file that we used for web context configuration? Ans : web.xml
+   
+   
+   Design Patterns
+   ----------------
+   
+  8) Let's say I have an employee and the designation of the empoyee is a property. The designation of the employee can change over time to time.
+     The designation can be contractor/Full-Time/Manager/Architect. But the role can change.
+         a) How will you do the design of the objects?
+         b) Which design patterns will you use to solve this problem?
+         c) Which classes will be concrete and which will be abstract/interface? And why?
+            Justify your design.
+            
+ 9) What are the differences between state pattern and strategy pattern?
+ 10) Which patterns will you use in this case?
+ 
+ Spring Security
+ ------------------
+ 11) Did you work with authentication, authorization? What is the difference between them?
+ 12) Did you work with OAuth authentication mechanism?
+ 13) How did you implement security check in Spring Rest Side? Ans : Spring Security module. 
+ 14) Did you use token based authentication?
+ 15) How can you parse the token in the back end and validate it?
+ 
+ HIbernate
+ -------------------
+ 16) Hibernate does a query. If the same query is fired again, will hibernate go to the DB, or what will it do?
+ 
+ Kafka
+ --------------
+ 17) What are partitions in Kafka?
+ 18) What are topics in Kafka?
+ 19) If a topic is partitioned, then how will the messages be delivered to the partitions? Will the message go to every partition of the topic?
+ 20) How are the subscribers arranged to Kafka? All the subscribers listen to the same partition, or not?
+ 21) Are the topics instance level, or cluster level? 
+ 22) Are the partitions instance level, or cluster level?
+         
+ AWS
+ --------------------------
+ 23) Which services of AWS did you use?
+ 24) How many kinds of storages are there in S3? Which stoarges did youuse?
+ 25) How does S3 store the data ( As SQL or Documents, or how ) ?
+ 26) In order to identofy the stored document, what kind of identifier did you use? 
+ 27) How did you store the above identifiers in the system?
+ 
+
+
+=======================================================================================
+#
+#  Ericsson Second Round Interview
+#
+======================================================================================
+
+1) What Exception will you get when you divide an int with zero? 
+   Answer : Arithmatic**OperationException
+   
+2) What exception will you get if you divide a long or float by zero? Why difference?
+3) How are the incoming requests mapped to the servlets? 
+4) When there is an incoming request, how does it come to the RestFul controller?
+5) When hibernate fires the same query for the second time, does ot go to the DB or it hits the cache and gives back the result?
+
+
+
+
+===================================================================================================================
+#
+#  NatWest UK Position - First Round of interview
+#
+====================================================================================================================
+1) What do you understand by real time processing of data?
+2) In RestFul service, say one service is called first. Then in parallel other services are called. How will you deal with this design problem?
+3) Current Project, generic questions
+
+
+
+=================================================================================================================
+#
+# Ericsson Kolkata Second Round - Technical ( I remeber the panelist - Nilashish Nundy )
+#
+==================================================================================================================
+
+1) What are the roles and responsibility you are playing in current project?
+2) Did you work with Cassandra? What is it, how does it work?
+3) Did you work with any other NoSql database?
+4) Did you work with Couchbase?
+5) If you have to increase overall throughput of your application, how will you do it?
+6) Did you use Apache Camel? 
+7) How did you use Camel? What are main drawbacks or disadvantages of Camel, when compared to other frameworks?
+8) Did you write Camel configuration with DSL? How did you do it?
+
+
+
+=================================================================================================================
+#
+# ThoughtWorks - Code Pairing Round
+#
+==================================================================================================================
+
+1) An already existing codebase was given. The codebase was given before two days from interview. In the interview I was asked to pick a task from 
+Sprint board and do code modification on it.
+
+ThoughtWorks - Technical Interview
+---------------------------------------------------------------
+1) Started with - In recent time, what piece of work did you enjoy the most
+   Answer : The migration of API from MD2 to private cloud.
+2) How did you do? What are the points that you will improve if you have to do that again?
+3) How did you implement the PKI certificate based authentication of the API?
+4) How did you improve the build/deploy pipeline ( Jenkins ) to adapt to the private cloud environment?
+5) Apart from Java/Microservice stack, did you work in any other language ( like python, scala, groovy, kotlin ) stack? 
+   If not, why? Would you like to work in any other stack? Why?
+6) What changes were done to deployment mechanism when moved to private cloud from on-premises infrastructure?
+
+
+
+
+============================================================================================================================================================
+
+CTS Off shore Questions
+
+============================================================================================================================================================
+
+Explain Functional  interface, Default method, method reference?
+
+How to overload and override main method in Java?
+
+Yes, We can overload the main method in java but JVM only calls the original main method, it will never call our overloaded main method.
+
+What will be the end result of .filter() operation in stream API?
+
+The filter method essentially selects elements based on a condition you provide. That's why the filter (Predicate condition) accepts a Predicate object, which provides a function that is applied to a condition. If the condition evaluates true, the object is selected. Otherwise, it will be ignored.
+
+What is Predicate in java 8?
+In Java 8, Predicate is a functional interface, which accepts an argument and returns a boolean. Usually, it used to apply in a filter for a collection of objects.
+
+Different between finally and finalize?
+
+Explain Optional of() method in Java with examples?
+
+The of() method of java.util.Optional class in Java is used to get an instance of this Optional class with the specified value of the specified type.
+// create a Optional
+ Optional<Integer> op = Optional.of(9455);
+// print valuel
+System.out.println("Optional: " + op);
+Output: Optional: Optional[9455]
+
+What happens when we declare a thread inside main method in java, what are the active threads are there in the program?
+
+
+
+
+Explain @SpringbootApplication annotation?
+
+Advantage and disadvantage of resttemplate and feignclient?
+
+
+Using Feign-clients over rest-templates has number of advantages. I will list down those below.
+
+• The developer need not worry about the implementation. Just to create abstract Feign interface and few annotations - declarative principle. (If you want customized configuration, then it will hold some code)
+
+• With Spring Cloud Eureka, Ribbon client-side load-balancer will be equipped with Feign client.
+
+• No need to worry about the unit test, because there is no implementation from you to test. (Arguable)
+
+• Supports Feign annotations and JAX-RS annotations.
+
+• Highly compatible and easily configurable with Spring Cloud (Specially with Eureka server registry)
+
+• Allows Feign client configuration via @Configuration class or application properties.
+
+• Allows us to add interceptors. (Add interceptors via @Configuration or application properties. Alternatively can use Spring Cloud provided interceptors as well. Example - BasicAuthRequestInterceptor)
+
+• Hystrix support for fall-back mechanism.
+
+• Logging
+
+• Error handling
+
+Feign is a good choice, If you are fascinated with JPA and the way how it resolves your queries, then Feign is the tool for you. Feign will handle your server requests perfectly fine.
+
+RestTemplate is used for making the synchronous call. When using RestTemplate, the URL parameter is constructed programmatically, and data is sent across to the other service. In more complex scenarios, we will have to get to the details of the HTTP APIs provided by RestTemplate or even to APIs at a much lower level.
+
+Feign is a Spring Cloud Netflix library for providing a higher level of abstraction over REST-based service calls. Spring Cloud Feign works on a declarative principle. When using Feign, we write declarative REST service interfaces at the client, and use those interfaces to program the client. The developer need not worry about the implementation ...
+
+
+Explain springboot Actuator?
+
+How to Changing the Logging Level at the Runtime for a Spring Boot Application?
+
+We're going to start by using the /loggers Actuator endpoint to display and change our logging level. The /loggers endpoint is available at actuator/loggers and we can access a specific logger by appending its name as part of the path.
+
+For example, we can access the root logger with the URL http://localhost:8080/actuator/loggers/root.
+
+To change the logging level, we can issue a POST request to the /loggers endpoint:
+
+curl -i -X POST -H 'Content-Type: application/json' -d '{"configuredLevel": "TRACE"}' http://localhost:8080/actuator/loggers/com.baeldung.spring.boot.management.logging HTTP/1.1 204 Date: Mon, 02 Sep 2019 13:56:52 GMT
+
+Can we use .yml and .properties  both in single springboot  application?
+
+Yes You can use both at same time in same project.
+
+When you use both YML and properties at same time, say for example
+application.yml and application.properties at same time in same
+project, first application.yml will be loaded later
+application.properties will be loaded.
+
+Important point to be noted is that if application.yml and application.properties have same keys for example in application.yml has spring.app.name = testYML and application.properties has spring.app.name = testProperties at same time in same project, then application.yml value will be overwritten by application.properties value since it is loading at last.
+
+And the value in spring.app.name = testProperties.
+
+
+
+
+
+
+=============================================
+Ericsson - Kolkata - First Round
+============================================
+
+
+1) What is the new change brought in terms of memory in java 8?
+
+Simply put, Metaspace is a new memory space – starting from the Java 8 version; it has replaced the older PermGen memory space. The most significant difference is how it handles memory allocation.
+Specifically, this native memory region grows automatically by default.We also have new flags to tune the memory:
+
+MetaspaceSize and MaxMetaspaceSize – we can set the Metaspace upper bounds.
+MinMetaspaceFreeRatio – is the minimum percentage of class metadata capacity free after garbage collection
+MaxMetaspaceFreeRatio – is the maximum percentage of class metadata capacity free after a garbage collection to avoid a reduction in the amount of space
+Additionally, the garbage collection process also gains some benefits from this change. The garbage collector now automatically triggers the cleaning of the dead classes once the class metadata usage reaches its maximum metaspace size.
+
+Therefore, with this improvement, JVM reduces the chance to get the OutOfMemory error.
+
+2)What is the adapter design pattern and write an example.
+3)Explain the singleton pattern and write the code.
+4)Explain Double-Checked Locking with Singleton?
+5)Problem- solution > suppose there is a cache of elements which can hold only 10 elements at a time
+and after 10 sec cache needs to be cleared by 1 element and before insertion of each element the waiting time will be 10 sec- how to solve.
+
+Use two threads , one will wait for 10 seconds after inserting an element and other will wait for 10 seconds before removing it from cache.
+
+
+
+
+6) https://www.geeksforgeeks.org/producer-consumer-solution-using-threads-java/
+
+
+
+
+================================================
+Ericsson - Second Round - Kolkata
+=====================================================
+
+1) How Hashmap works internally?
+2) Difference between concurrentMap and SynchronizedMap?
+3) What is the default size of hashmap?(default size=16)
+4) What is the default size of ArrayList and how it gets incremented?(default size=10
+5) What is load factor in Arraylist?
+6) What is CopyOnArrayList?
+7) How to reverse and store a string without using the string reverse method?
+8) What is consumer producer problem in thread and how to solve it?
+9) What is the interface that lamda function use internally?
+10) Suppose the is an arraylist of string object and we invoke stream operation on them. What are the limitations on them?
+11) What is the difference between map and flatmap?
+12) What is the difference between stream and parallel stream?
+13) How to disable sipringboot autoconfiguration?
+14) What is an actuator in springboot?
+
+
+hexaview
+-----------------
+1)Write a code for printing number of charecter occourence of given string?
+https://www.geeksforgeeks.org/java-program-to-count-the-occurrence-of-each-character-in-a-string-using-hashmap/
+2)Write code to sum up values of an integer array with stream api?
+3)What are the J2ee design patterns you know?
+4)What is filter pattern?
+5)How HashMap works internally?
+6)What is lambda function?
+7)What is stream API?
+8)Have you worked on any MQ ?
+9) Write a programm to count occourence of a charecter in a String?
+
+
+Virtusa
+--------------------------------
+0) Tell me about your current project architecture?
+1) Why to chose microservice in your current project?
+2) How we can achive asynchronus messing in microservice architecture?
+3) What is docker image and what role it playes in container technology?
+4) How we can achive security in REST api?
+5) How security is implemented in your current project?
+6) In terms of memory what is the changes brought in java 8?
+Simply put, Metaspace is a new memory space – starting from the Java 8 version; it has replaced the older PermGen memory space. The most significant difference is how it handles memory allocation.
+Specifically, this native memory region grows automatically by default.
+We also have new flags to tune the memory:
+MetaspaceSize and MaxMetaspaceSize – we can set the Metaspace upper bounds.
+MinMetaspaceFreeRatio – is the minimum percentage of class metadata capacity free after garbage collection
+MaxMetaspaceFreeRatio – is the maximum percentage of class metadata capacity free after a garbage collection to avoid a reduction in the amount of space
+Additionally, the garbage collection process also gains some benefits from this change. The garbage collector now automatically triggers the cleaning of the dead classes once the class metadata usage reaches its maximum metaspace size.
+Therefore, with this improvement, JVM reduces the chance to get the OutOfMemory error.
+
+7) What other new features of java 8 have you used?
+8) Explain Thread Executor service for achiving asynchronusprocessing?
+9) What is ScheduledExecutorService?
+10) Can you write a program with ScheduledExecutorService?
+https://www.baeldung.com/java-executor-service-tutorial
+10) Write a program to print the sum of consicutive sum of character values in a given string ? e.g. string= ABCDEEEFG , A=1,B=2,C=3,D=4,E=5 , then output=ABCD20FG
+11) Tell me about some of the flaws/vernarebilities of veracode scan?
+12) What about recent log4j vernarebiliti? ( exposing JNDI in log which can be accessed and manipulated by suspicious attacker)
+13) What is apigate way in microservice?
+14) What is hibernate first and sceond level cache?
+
+
+LabVantage
+------------------------------------------------
+1)Can we override private and static methods? NO
+
+2)We have overloaded functions and we are passing null.
+Which function will be called and what will be the output of the program?
+
+public class Test {
+public static void main(String[] args) {
+foo(null);
+}
+public static void foo(Object o) {
+System.out.println("Object argument");
+}
+public static void foo(String s) {
+System.out.println("String argument");
+}
+}
+
+Ans: According to Java specs, in case of overloading, the compiler picks the most specific function.
+Obviously String class is more specific than Object class, hence it will print “String argument”.
+
+3)Please sort an array in decending order : int[] myArray = {8,5,2,9,6};
+
+Ans:
+private static void sortArray() {
+// declaring and initializing the array
+int[] arr = new int[] {8,5,2,9,6};
+
+int temp = 0;
+
+// traverse 0 to array length
+for (int i = 0; i < arr.length - 1; i++) {
+
+// traverse i+1 to array length
+for (int j = i + 1; j < arr.length; j++) {
+
+// compare array element with
+// all next element
+if (arr[i] < arr[j]) {
+
+temp = arr[i];
+arr[i] = arr[j];
+arr[j] = temp;
+}
+}
+}
+// print all element of array
+for (int value : arr) {
+System.out.println(value + " ");
+}
+}
+
+4)How to get distinct characters and their count in a String?
+Input = "abcdABCDabcd";
+Output =  {a=2, A=1, b=2, B=1, c=2, C=1, d=2, D=1}
+
+Ans: with stream - string.chars().distinct().count();
+
+private static void checkOccourenceOfCharaterInString() {
+String s = "abcdABCDabcd";
+Set<Character> set = new HashSet<Character>();
+for (int i = 0; i < s.length(); ++i){
+char ch = s.charAt(i);
+if ((ch >= 65 && ch <= 90) || (ch >= 97 && ch <= 122))
+set.add(s.charAt(i));
+}
+System.out.println(set.size());
+}
+
+5)Java program to check if the given number is Prime?
+
+Ans:
+private static boolean isPrime(int n)
+{
+// Corner case
+if (n <= 1)
+return false;
+
+// Check from 2 to n-1
+for (int i = 2; i < n; i++)
+if (n % i == 0)
+return false;
+else
+return true;
+
+return true;
+}
+
+Ans: A prime is a natural number greater than 1 that has no positive divisors other than 1 and itself.
+Examples of first few prime numbers are {2, 3, 5,
+% = Modulus operator , devides two numbers and returns the operator
+
+6)Java Program to check if a vowel is present in the string?
+
+String str = "GeeksForGeeks";
+str = str.toLowerCase();
+
+// toCharArray() is used to convert
+// string to char array
+char[] chars = str.toCharArray();
+
+int count = 0;
+
+for (int i = 0; i < str.length(); i++) {
+// check if char[i] is vowel
+if (str.charAt(i) == 'a' || str.charAt(i) == 'e' || str.charAt(i) == 'i' || str.charAt(i) == 'o'
+|| str.charAt(i) == 'u') {
+// count increments if there is vowel in
+// char[i]
+count++;
+}
+}
+
+// display total count of vowels in string
+System.out.println("Total no of vowels in string are: " + count);
+
+7)What will be the output of the program?
+String x = "abc";
+String y = "abc";
+x.concat(y);
+System.out.print(x.concat(y));
+
+
+8)EMP table
+empid empname deptid salary
+E1  Saibal  D1     1000000
+E2    Bimal   D1     1200000
+E3    Pradeep D1     3000000
+E4    Tapas   D2     4500000
+E5    Kamal   D2     90000000
+
+Find the number of employees in each department along with the department code. Below is the required output
+Deptid Number of employees
+D1     3
+D2     2
+
+
+SELECT deptid, COUNT(*) FROM EMP GROUP BY deptid;
+
+9) What is singleton design pattern ?Write a singleton class?
+
+10)Write a program to conver list to set?
+Ans:
+HashSet constructor can take another collection object to construct a new set containing the elements of the specied list.
+Using stream - list.stream().collect(Collectors.toSet());
+
+
+================================================================================================
+Cerner Kolkata - First Round
+================================================================================================
+
+1) There are two components of an enterprise application. One is in cloud and the other one is in-house. How to integrate those in a new microservice architechture?
+2) What is a distributed tracing in microservice? How to use it? 
+            -- Answer : AppDynamics, Sleuth etc.
+3) What is a distributed logging? Which tools are used to do distruibuted logging in microservice?
+
+
+
+==================
+MindTree Kolkata
+=================
+1) What is Element Collection in Hibernate?
+2) How to make thread safe spring Bean?
+3) What is inheritance strategy and table mapping in hibernate?
+4) How will you designt the microservice?
+
+=============================
+ITC Infotech 
+==============================
+
+1) What is CAP Theory?
+2) What is an outblund transaction?
+
+
+
+=============================================
+Capgemini - Kolkata - Architect 
+=============================================
+1) What is Service Mesh?
+2) Difference between Kafka and Rabbit MQ?
+3) How to scale a Relational DB?
+4) What is a proxy server?
+5) What is a reverse proxy server?
+6) What is Docker? How to use it
+7) What are the differences between different NoSql DBs, like Couchbase/MongoDB etc..?
+8) Which Microservice patterns did you use?
+*** Please do the AWS Solutions architect certification
+*** Kubernetes knowledge is important
+9) What are the types of Load Banlancers available?
+10) If you want to stop traffic from a certain region, what will you do?
+11) What capabilities does API Gateway give us?
+
+
+=====================================================================================
+
+Tech. Mahindra interview
+
+--------------------------------------------------------------------------------------------------
+
+1) Difference between stream parallel processing and Normal Java Thread.
+2) What is the purpose of API Gateway.
+3) WHat is thread pool and how to use it?
+4) What is SPring AOP?
+5) How Does AOP WOrk?
+6) Did I use any executor service?
+7) Do you think normal java thread are faster or stream paralle APIs are faster?
+8) What will happen if I use @Repository instead of @Service in Spring bean?
+9) What will happen if I use @Service instead of @Controller?
+10) What do you understand by pointcut?
+
+-----------------------------------------------------------------------------------------------------------

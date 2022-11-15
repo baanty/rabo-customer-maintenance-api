@@ -1,0 +1,11 @@
+{
+   "id":1,
+   "firstName":"Pijush K",
+   "lastName":"Das",
+   "age":99,
+   "address":{
+      "id":1,
+      "streetName":"Eemnesserweg",
+      "city":"Seattle"
+   }
+}
