@@ -895,7 +895,8 @@ DeuDeutsche bank Develooper - Berlin
 2) What is the Big O() notation?
 3) How is time complexity caculated for different data structures?
 4) What is the time complexity of HashMap, ArrayList and Vector?
-5) 
+5) If I insert in the middle of a Hash Map, how will it work? What will be the time taken?
+6) What is N+1 problem in JPA?
 
 
 
