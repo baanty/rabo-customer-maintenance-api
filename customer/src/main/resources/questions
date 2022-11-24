@@ -897,6 +897,11 @@ DeuDeutsche bank Develooper - Berlin
 4) What is the time complexity of HashMap, ArrayList and Vector?
 5) If I insert in the middle of a Hash Map, how will it work? What will be the time taken?
 6) What is N+1 problem in JPA?
+7) What do you mean by Transaction Isolation? 
+8) What are the different types of transaction isolation?
+9) What will be the problem if we do not maintain proper transaction isolation in an enterprise application?
+10) Find the least distance between several points.
+
 
 
 
