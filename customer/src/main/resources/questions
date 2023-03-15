@@ -904,10 +904,27 @@ DeuDeutsche bank Develooper - Berlin
 
 
 
+===========================================================================================================================
 
+Morgan Stanley Budapest Senior Developer 
 
+=============================================================================================================================
 
-
+1) Apart from Volatile and Sunchronized, how can you make something threadsafe? What is the internal mechanism of Volatile to work?
+2) What are the differences between List and Set
+      - Ordering
+      - Sorting
+3) What kind of testing had you done?
+4) At what stages of the software lifecycle did you do those testings?
+5) How to test external integrations?
+   - SpringBootTest , before the deployment.
+6) What will happen if you make a hashcode inefficient?
+7) What is hash collison?
+8) What will happen if you put elements in a hashmap as key, but all the elements return the same hashcode?
+   -It will still find the values associated with the keys. But the operation will be expensive. It will go for red-balc tree traversal. Get further details from
+   Google.
+   
+9) When will you use a LinkedList and when will you use an ArrayList? What are the scenarios for LinkedList and ArrayList?
 
 
 
