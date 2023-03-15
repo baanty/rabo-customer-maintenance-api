@@ -925,6 +925,8 @@ Morgan Stanley Budapest Senior Developer
    Google.
    
 9) When will you use a LinkedList and when will you use an ArrayList? What are the scenarios for LinkedList and ArrayList?
+10) If a collection variable is final, is the class still immutable?
+11) What if the hashcode method is returning a constant? Will I be able to insert and retrieve values?
 
 
 
