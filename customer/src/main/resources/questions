@@ -933,6 +933,30 @@ Morgan Stanley Budapest Senior Developer
 
 
 
+=================================================================================================================================================
+
+KPN - Netherlands
+
+====================================================================================================================================================
+
+1) What did you do in your last project?
+2) Did you use Apache Camel? Why did you use Camel?
+3) Which front end framworks did you use?
+4) Do you know about Docker and Kubernetes?
+5) What is master node and what is slave node in Docker?
+6) How was batch processing done in ING API development?
+7) Did you use any asynchronous messaging framework?
+8) What is Spring Batch Fraework?
+9) Did you use a Spring Batch Framework?
+10) What are the differences between a Spring Batch and Camel?
+11) What is a Authentication and what is Authorization?
+12) What are the differences between authentication and authorization?
+13) How did you implment security in your ING bank KYC API?
+14) What did you use as a Security? Basic Authentication or Certificate based authentication or token or what
+    did you use as security framework?
+15) Mention the exact steps of the security framework implementation.
+16) Do you have a team leading experience?
+
 
 
 
