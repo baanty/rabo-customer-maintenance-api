@@ -966,7 +966,7 @@ Morgan Stanley - Budapest
 
 1) How will you see which java method or class execution is taking more time?
 2) What is a java heap dump?
-3) How to do a java heap dump?
+3) How to analyze a java heap dump?
 
 
 
