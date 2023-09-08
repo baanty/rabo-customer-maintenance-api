@@ -969,8 +969,21 @@ Morgan Stanley - Budapest
 3) How to analyze a java heap dump?
 
 
+======================================================================
+Ericsson Project interview Questions
+=======================================================================
+
+ELK Questions
+-----------------------
+1) How did you use ELK in your project?
+2) What is an anlyzer in ELK?
+3) What is the role of logstash in ELK?
+4) 
 
 
-
+Docker-Kubernetes Questions
+-------------------------
+1) How is virtualization different from containerization?
+2) If I have two containers in two different VMs, and they are not connected by the repo, then how will you connect between them to work with an archive?
 
 
